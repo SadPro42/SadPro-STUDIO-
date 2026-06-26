@@ -20,6 +20,17 @@
             justify-content: center;  /* Centra l'immagine orizzontalmente */
             align-items: center;      /* Centra l'immagine verticalmente */
             overflow: hidden;         /* Evita barre di scorrimento indesiderate */
+            position: relative;       /* Necessario per posizionare il canvas sotto l'immagine */
+        }
+
+        /* Il Canvas rimane sotto tutto */
+        #bg-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;               /* Livello inferiore (Sfondo) */
         }
 
         /* Stile dell'immagine per renderla adatta a tutti gli schermi */
@@ -27,12 +38,86 @@
             max-width: 90%;           /* Impedisce all'immagine di uscire dagli schermi piccoli */
             max-height: 90vh;
             object-fit: contain;      /* Mantiene le proporzioni dell'immagine */
+            position: relative;
+            z-index: 2;               /* Livello superiore (Sopra le palline) */
+            pointer-events: none;     /* Evita che l'immagine blocchi eventuali interazioni col mouse */
         }
     </style>
 </head>
 <body>
 
+    <canvas id="bg-canvas"></canvas>
+
     <img src="wip.jpg" class="centered-image">
+
+    <script>
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Adatta il canvas alla dimensione della finestra
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const particlesArray = [];
+        const numberOfParticles = 40; // Numero di palline totali
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 4 + 2; // Dimensione da 2 a 6 pixel
+                
+                // Movimento molto lento
+                this.speedX = (Math.random() * 0.4) - 0.2; 
+                this.speedY = (Math.random() * 0.4) - 0.2;
+                
+                // Palline bianche semi-trasparenti che stanno bene sullo sfondo #8f8f8f
+                this.color = 'rgba(255, 255, 255, 0.3)'; 
+            }
+
+            // Aggiorna la posizione della pallina
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                // Rimbalzo sui bordi dello schermo
+                if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
+                if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
+            }
+
+            // Disegna la pallina sul canvas
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        // Crea le palline iniziali
+        function init() {
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        // Loop di animazione
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+    </script>
 
 </body>
 </html>
