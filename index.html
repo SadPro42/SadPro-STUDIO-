@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Under Construction</title>
+    <title>Sito in Costruzione</title>
     <style>
         /* Reset base per eliminare i margini di default */
         * {
@@ -14,47 +14,49 @@
 
         /* Impostazioni del corpo della pagina */
         body {
-            background-color: #8f8f8f; /* Il colore di sfondo richiesto */
+            background-color: #c7c7c7; /* Colore di sfondo dell'immagine */
             height: 100vh;            /* Prende tutta l'altezza dello schermo */
             display: flex;
-            justify-content: center;  /* Centra l'immagine orizzontalmente */
-            align-items: center;      /* Centra l'immagine verticalmente */
-            overflow: hidden;         /* Evita barre di scorrimento indesiderate */
-            position: relative;       /* Necessario per posizionare il canvas sotto l'immagine */
+            justify-content: center;  /* Centra orizzontalmente */
+            align-items: center;      /* Centra verticalmente */
+            overflow: hidden;         /* Evita barre di scorrimento */
+            position: relative;       /* Base per posizionare il canvas */
         }
 
-        /* Il Canvas rimane sotto tutto */
+        /* 1. L'immagine centrata (Livello 1 - Sotto) */
+        .centered-image {
+            max-width: 90%;           /* Adattamento schermi piccoli */
+            max-height: 90vh;
+            object-fit: contain;      /* Mantiene proporzioni */
+            position: relative;
+            z-index: 1;               /* Livello più basso */
+        }
+
+        /* 2. Il Canvas delle palline (Livello 2 - Sopra) */
         #bg-canvas {
-            position: absolute;
+            position: absolute;       /* Sovrapposizione assoluta */
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1;               /* Livello inferiore (Sfondo) */
-        }
-
-        /* Stile dell'immagine per renderla adatta a tutti gli schermi */
-        .centered-image {
-            max-width: 90%;           /* Impedisce all'immagine di uscire dagli schermi piccoli */
-            max-height: 90vh;
-            object-fit: contain;      /* Mantiene le proporzioni dell'immagine */
-            position: relative;
-            z-index: 2;               /* Livello superiore (Sopra le palline) */
-            pointer-events: none;     /* Evita che l'immagine blocchi eventuali interazioni col mouse */
+            z-index: 2;               /* Livello superiore: va SOPRA l'immagine */
+            pointer-events: none;     /* IMPORTANTE: Permette di toccare l'immagine sotto se necessario */
         }
     </style>
 </head>
 <body>
 
-    <canvas id="bg-canvas"></canvas>
+    <!-- IMPORTANTE: L'immagine viene dichiarata PRIMA per stare sotto -->
+    <img src="wip.png" alt="Sito in Costruzione" class="centered-image">
 
-    <img src="wip.jpg" class="centered-image">
+    <!-- Il Canvas per le palline sovrapposto -->
+    <canvas id="bg-canvas"></canvas>
 
     <script>
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
 
-        // Adatta il canvas alla dimensione della finestra
+        // Ridimensiona il canvas a tutto schermo
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
@@ -63,33 +65,33 @@
         resizeCanvas();
 
         const particlesArray = [];
-        const numberOfParticles = 40; // Numero di palline totali
+        // Aumentato leggermente il numero di palline per riempire l'area
+        const numberOfParticles = 60; 
 
         class Particle {
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 4 + 2; // Dimensione da 2 a 6 pixel
+                // Dimensione delle palline leggermente più grande per visibilità
+                this.size = Math.random() * 6 + 4; 
                 
-                // Movimento molto lento
-                this.speedX = (Math.random() * 0.4) - 0.2; 
-                this.speedY = (Math.random() * 0.4) - 0.2;
+                // Velocità molto ridotta per l'effetto fluttuante
+                this.speedX = (Math.random() * 0.3) - 0.15; 
+                this.speedY = (Math.random() * 0.3) - 0.15;
                 
-                // Palline bianche semi-trasparenti che stanno bene sullo sfondo #8f8f8f
-                this.color = 'rgba(255, 255, 255, 0.3)'; 
+                // Colore bianco semi-trasparente (rgba) per l'effetto sfocatura
+                this.color = 'rgba(255, 255, 255, 0.4)'; 
             }
 
-            // Aggiorna la posizione della pallina
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
 
-                // Rimbalzo sui bordi dello schermo
+                // Fai rimbalzare le palline ai bordi dello schermo
                 if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
                 if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
             }
 
-            // Disegna la pallina sul canvas
             draw() {
                 ctx.fillStyle = this.color;
                 ctx.beginPath();
@@ -98,14 +100,13 @@
             }
         }
 
-        // Crea le palline iniziali
         function init() {
+            particlesArray.length = 0; // Pulisce l'array se necessario
             for (let i = 0; i < numberOfParticles; i++) {
                 particlesArray.push(new Particle());
             }
         }
 
-        // Loop di animazione
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             for (let i = 0; i < particlesArray.length; i++) {
@@ -118,6 +119,5 @@
         init();
         animate();
     </script>
-
 </body>
 </html>
