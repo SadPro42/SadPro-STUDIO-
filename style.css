@@ -9,7 +9,7 @@
   --brown:#403127;
   --gray:#8c877e;
   --line:rgba(232,223,209,.22);
-  --header-height:105px;
+  --header-height:130px;
 }
 
 
@@ -777,9 +777,9 @@ img {
 @media(max-width:850px) {
 
   .site-header {
-    height:100px;
+    height:130px;
 
-    min-height:100px;
+    min-height:130px;
 
     padding:18px;
 
