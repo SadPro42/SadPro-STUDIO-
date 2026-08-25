@@ -87,3 +87,13 @@ if (gumroadButton && modal) {
 }
 
 detectCountryLanguage();
+
+
+const menuToggle = document.querySelector('.menu-toggle');
+const navigation = document.querySelector('.main-navigation');
+
+if (menuToggle && navigation) {
+  menuToggle.addEventListener('click', () => {
+    navigation.classList.toggle('is-open');
+  });
+}
