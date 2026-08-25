@@ -79,19 +79,16 @@ img {
    ========================= */
 
 .header-brand {
+  width:80px;
+
   display:flex;
   flex-direction:column;
 
   align-items:flex-start;
   justify-content:center;
 
-  width:80px;
-
   flex-shrink:0;
 }
-
-
-/* LOGO */
 
 .logo {
   display:block;
@@ -109,13 +106,14 @@ img {
 }
 
 
-/* LANGUAGE */
+/* =========================
+   LANGUAGE
+   ========================= */
 
 .language-switcher {
   display:flex;
 
   align-items:center;
-  justify-content:flex-start;
 
   gap:7px;
 
@@ -136,8 +134,9 @@ img {
 
   cursor:pointer;
 
-  font-size:9px;
+  padding:0;
 
+  font-size:9px;
   line-height:1;
 
   letter-spacing:.15em;
@@ -150,7 +149,7 @@ img {
 
 
 /* =========================
-   DESKTOP MENU
+   DESKTOP NAVIGATION
    ========================= */
 
 .main-navigation {
@@ -158,30 +157,28 @@ img {
 
   align-items:center;
 
-  justify-content:center;
-
-  gap:12px;
+  gap:10px;
 
   margin-left:auto;
-  margin-right:60px;
+  margin-right:30px;
 }
 
 .main-navigation a {
   position:relative;
+
+  width:100px;
+  min-height:40px;
 
   display:flex;
 
   align-items:center;
   justify-content:center;
 
-  width:100px;
-  height:40px;
-
   flex-shrink:0;
 
   text-align:center;
 
-  white-space:normal !important;
+  white-space:normal;
 
   line-height:1.15;
 
@@ -196,15 +193,12 @@ img {
   transition:color .25s ease;
 }
 
-
-/* eventuale <br> */
-
 .main-navigation a br {
   display:block;
 }
 
 
-/* LINEA SOTTO LA VOCE */
+/* underline */
 
 .main-navigation a::before {
   content:"";
@@ -231,7 +225,7 @@ img {
 }
 
 
-/* VOCE ATTIVA */
+/* active */
 
 .main-navigation a.active {
   color:var(--cream);
@@ -243,7 +237,7 @@ img {
 
 
 /* =========================
-   MOBILE MENU BUTTON
+   MOBILE BUTTON
    ========================= */
 
 .menu-toggle {
@@ -252,7 +246,7 @@ img {
   position:absolute;
 
   top:50%;
-  right:14px;
+  right:18px;
 
   transform:translateY(-50%);
 
@@ -401,7 +395,6 @@ img {
   flex-direction:column;
 
   justify-content:center;
-
   align-items:center;
 
   gap:12px;
@@ -529,7 +522,6 @@ img {
   display:inline-flex;
 
   align-items:center;
-
   justify-content:center;
 
   width:max-content;
@@ -780,79 +772,67 @@ img {
 
 @media(max-width:850px) {
 
-  /* =====================
-     HEADER MOBILE
-     ===================== */
+  /* HEADER */
 
   .site-header {
     height:100px;
     min-height:100px;
 
-    padding:18px;
-
-    position:sticky;
+    padding:16px 18px;
 
     display:flex;
 
     align-items:center;
-
     justify-content:flex-start;
   }
 
 
-  /* =====================
-     LOGO MOBILE
-     ===================== */
+  /* LOGO */
 
   .header-brand {
     width:80px;
 
-    align-items:flex-start;
+    display:flex;
 
+    flex-direction:column;
+
+    align-items:flex-start;
     justify-content:center;
   }
 
 
-  /* =====================
-     LANGUAGE MOBILE
-     ===================== */
+  /* LANGUAGE */
 
   .language-switcher {
     margin-top:5px;
-
-    gap:7px;
 
     font-size:9px;
   }
 
 
-  /* =====================
-     MENU MOBILE
-     ===================== */
+  /* MENU */
 
   .main-navigation {
     display:none;
 
     position:fixed;
 
-    top:118px;
+    top:116px;
     right:18px;
 
     z-index:250;
 
-    width:auto;
-
-    min-width:200px;
+    width:210px;
 
     margin:0;
 
-    padding:12px;
+    padding:10px;
 
     flex-direction:column;
 
     align-items:stretch;
 
-    gap:4px;
+    gap:3px;
 
     background:rgba(18,17,15,.97);
 
@@ -869,20 +849,18 @@ img {
   }
 
 
-  /* =====================
-     VOCI MENU MOBILE
-     ===================== */
+  /* MENU ITEMS */
 
   .main-navigation a {
     width:100%;
 
-    height:40px;
+    height:42px;
 
-    flex:none;
-
-    justify-content:flex-start;
+    min-height:42px;
 
     padding:0 12px;
+
+    justify-content:flex-start;
 
     text-align:left;
 
@@ -894,7 +872,7 @@ img {
   .main-navigation a::before {
     left:12px;
 
-    bottom:2px;
+    bottom:3px;
 
     width:0;
   }
@@ -905,17 +883,13 @@ img {
   }
 
 
-  /* =====================
-     BOTTONE MENU MOBILE
-     ===================== */
+  /* MOBILE BUTTON */
 
   .menu-toggle {
     display:flex;
 
-    position:absolute;
-
     top:50%;
-    right:14px;
+    right:16px;
 
     transform:translateY(-50%);
 
@@ -926,9 +900,7 @@ img {
   }
 
 
-  /* =====================
-     HERO MOBILE
-     ===================== */
+  /* HERO */
 
   .hero {
     min-height:55vh;
@@ -941,9 +913,7 @@ img {
   }
 
 
-  /* =====================
-     PORTFOLIO MOBILE
-     ===================== */
+  /* GRID */
 
   .portfolio-grid {
     grid-template-columns:repeat(2,1fr);
@@ -952,9 +922,7 @@ img {
   }
 
 
-  /* =====================
-     INNER PAGES
-     ===================== */
+  /* INNER */
 
   .inner-page {
     width:min(90vw,760px);
@@ -967,9 +935,7 @@ img {
   }
 
 
-  /* =====================
-     ABOUT MOBILE
-     ===================== */
+  /* ABOUT */
 
   .about-block {
     grid-template-columns:1fr;
@@ -989,9 +955,7 @@ img {
   }
 
 
-  /* =====================
-     CONTACT MOBILE
-     ===================== */
+  /* CONTACT */
 
   .contact-layout {
     grid-template-columns:1fr;
@@ -1000,9 +964,7 @@ img {
   }
 
 
-  /* =====================
-     FOOTER MOBILE
-     ===================== */
+  /* FOOTER */
 
   .site-footer {
     flex-direction:column;
@@ -1036,8 +998,6 @@ img {
   }
 
 
-  /* MENU BUTTON */
-
   .menu-toggle {
     width:64px;
     height:64px;
@@ -1051,18 +1011,14 @@ img {
   }
 
 
-  /* MENU DROPDOWN */
-
   .main-navigation {
     top:112px;
 
     right:10px;
 
-    min-width:190px;
+    width:190px;
   }
 
-
-  /* HERO */
 
   .hero-meta,
   .page-meta {
