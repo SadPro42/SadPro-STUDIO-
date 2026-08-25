@@ -55,7 +55,7 @@ img{display:block;width:100%}
 .hero-meta,.page-meta{display:flex;justify-content:space-between;color:var(--gray);font-size:9px;letter-spacing:.18em}
 .hero-title{max-width:1100px}
 .hero-title h1{font-size:clamp(20px,15vw,230px);line-height:.8;letter-spacing:-.07em;font-weight:800;color:var(--cream)}
-.hero-title p{margin-top:auto;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray)}
+.hero-title p{margin-top:5px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray)}
 
 .portfolio-grid{display:grid;grid-template-columns: repeat(4, 1fr);gap:2px;background:var(--black)}
 .portfolio-item{position:relative;overflow:hidden;aspect-ratio:4/5;background:var(--brown)}
