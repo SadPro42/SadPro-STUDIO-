@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AZIENDA — Shop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="logo">AZIENDA<span>®</span></a>
+  <nav class="main-navigation">
+    <a href="index.html" data-i18n="home">HOME</a>
+    <a href="portfolio.html" data-i18n="portfolio">COMPLETE PORTFOLIO</a>
+    <a href="shop.html" data-i18n="shop">SHOP</a>
+    <a href="about.html" data-i18n="about">ABOUT</a>
+    <a href="contacts.html" data-i18n="contacts">CONTACTS</a>
+  </nav>
+  <div class="language-switcher"><button data-language="it">ITA</button><span>/</span><button data-language="en">ENG</button></div>
+</header>
+<main class="inner-page centered-page">
+  <div class="page-meta"><span>EXTERNAL / 001</span><span>GUMROAD</span></div>
+  <h1 data-i18n="shopTitle">SHOP</h1>
+  <button class="industrial-button" id="gumroadButton" data-i18n="shopButton">ENTER SHOP</button>
+</main>
+
+<div class="modal" id="leaveModal" aria-hidden="true">
+  <div class="modal-box">
+    <div class="modal-code">EXTERNAL LINK / 001</div>
+    <p id="leaveMessage"></p>
+    <div class="modal-actions">
+      <button class="industrial-button" id="continueButton" data-i18n="continue">CONTINUE</button>
+      <button class="text-button" id="cancelButton" data-i18n="cancel">CANCEL</button>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer"><div>AZIENDA est. 2026</div><div><span>STUDIO / 001</span><span>ALL RIGHTS RESERVED</span></div></footer>
+<script src="script.js"></script>
+</body>
+</html>
