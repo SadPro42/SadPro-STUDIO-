@@ -9,7 +9,7 @@
   --brown:#403127;
   --gray:#8c877e;
   --line:rgba(232,223,209,.22);
-  --header-height:100px;
+  --header-height:105px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -22,8 +22,8 @@ img{display:block;width:100%}
 .logo {display: flex;align-items: center;width: 80px;position: relative;}
 .logo span{font-size:8px;color:var(--rust);vertical-align:top;margin-left:2px}
 .main-navigation{display:flex;align-items:center;gap:30px}
-.main-navigation a{position:relative;font-size:14px;font-weight:600;letter-spacing:.16em;color:var(--cream-dark);transition:color .25s ease}
-.main-navigation a{position:relative;font-size:14px;font-weight:600;letter-spacing:.16em;color:var(--cream-dark);transition:color .25s ease}
+.main-navigation a{position:relative;font-size:14px;font-weight:600;letter-spacing:.12em;color:var(--cream-dark);transition:color .25s ease}
+.main-navigation a{position:relative;font-size:14px;font-weight:600;letter-spacing:.12em;color:var(--cream-dark);transition:color .25s ease}
 
 .main-navigation a::before{
   content:"";
