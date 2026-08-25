@@ -23,9 +23,30 @@ img{display:block;width:100%}
 .logo span{font-size:8px;color:var(--rust);vertical-align:top;margin-left:2px}
 .main-navigation{display:flex;align-items:center;gap:30px}
 .main-navigation a{position:relative;font-size:10px;font-weight:600;letter-spacing:.16em;color:var(--cream-dark);transition:color .25s ease}
-.main-navigation a::before{content:"";position:absolute;left:0;bottom:-7px;width:0;height:1px;background:var(--rust);transition:width .25s ease}
+.main-navigation a{position:relative;font-size:10px;font-weight:600;letter-spacing:.16em;color:var(--cream-dark);transition:color .25s ease}
+
+.main-navigation a::before{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-7px;
+  width:0;
+  height:1px;
+  background:var(--rust);
+  transition:width .25s ease
+}
+
 .main-navigation a:hover{color:var(--cream)}
 .main-navigation a:hover::before{width:100%}
+
+/* Pagina attualmente selezionata */
+.main-navigation a.active{
+  color:var(--cream);
+}
+
+.main-navigation a.active::before{
+  width:100%;
+}
 .language-switcher{display:flex;align-items:center;gap:7px;font-size:9px;letter-spacing:.15em}
 .language-switcher button{border:0;background:transparent;color:var(--gray);cursor:pointer;font-size:9px;letter-spacing:.15em}
 .language-switcher button:hover,.language-switcher button.active{color:var(--cream)}
