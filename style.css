@@ -75,12 +75,16 @@ img {
 
 
 /* =========================
-   LOGO
+   LOGO + LANGUAGE
    ========================= */
 
 .logo {
   display:flex;
+
+  flex-direction:column;
+
   align-items:center;
+  justify-content:center;
 
   width:80px;
 
@@ -101,18 +105,61 @@ img {
 
 
 /* =========================
+   LANGUAGE SWITCHER
+   ========================= */
+
+.language-switcher {
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  gap:7px;
+
+  margin-top:6px;
+
+  position:static;
+
+  flex-shrink:0;
+
+  font-size:9px;
+
+  line-height:1;
+
+  letter-spacing:.15em;
+}
+
+.language-switcher button {
+  border:0;
+
+  background:transparent;
+
+  color:var(--gray);
+
+  cursor:pointer;
+
+  font-size:9px;
+
+  letter-spacing:.15em;
+}
+
+.language-switcher button:hover,
+.language-switcher button.active {
+  color:var(--cream);
+}
+
+
+/* =========================
    DESKTOP MENU
    ========================= */
 
 .main-navigation {
   display:flex;
+
   align-items:center;
 
   gap:18px;
 
-  /*
-   * Spostamento del menu verso destra
-   */
   margin-left:80px;
 }
 
@@ -190,57 +237,18 @@ img {
 
 
 /* =========================
-   LANGUAGE SWITCHER
-   ========================= */
-
-.language-switcher {
-  position:absolute;
-
-  left:18px;
-  top:70px;
-
-  margin:0;
-
-  display:flex;
-  align-items:center;
-
-  gap:7px;
-
-  font-size:9px;
-  line-height:1;
-}
-
-.language-switcher button {
-  border:0;
-
-  background:transparent;
-
-  color:var(--gray);
-
-  cursor:pointer;
-
-  font-size:9px;
-
-  letter-spacing:.15em;
-}
-
-.language-switcher button:hover,
-.language-switcher button.active {
-  color:var(--cream);
-}
-
-
-/* =========================
    MOBILE MENU BUTTON
    ========================= */
 
 .menu-toggle {
   display:none;
 
-  position:fixed;
+  position:absolute;
 
-  top:18px;
+  top:50%;
   right:18px;
+
+  transform:translateY(-50%);
 
   z-index:300;
 
@@ -769,17 +777,34 @@ img {
 @media(max-width:850px) {
 
   .site-header {
-    height:auto;
+    height:100px;
 
-    min-height:70px;
+    min-height:100px;
 
     padding:18px;
+
+    position:sticky;
 
     display:flex;
 
     justify-content:flex-start;
 
+    align-items:center;
+
     flex-wrap:wrap;
+  }
+
+
+  /* =====================
+     LOGO MOBILE
+     ===================== */
+
+  .logo {
+    width:80px;
+
+    align-items:flex-start;
+
+    justify-content:center;
   }
 
 
@@ -870,36 +895,21 @@ img {
   .menu-toggle {
     display:flex;
 
+    position:absolute;
+
+    top:50%;
+
+    right:14px;
+
+    transform:translateY(-50%);
+
     width:68px;
 
     height:68px;
 
-    top:14px;
-
-    right:14px;
+    z-index:300;
 
     font-size:26px;
-  }
-
-
-  /* =====================
-     LANGUAGE SOTTO LOGO
-     ===================== */
-
-  .language-switcher {
-    position:absolute;
-
-    left:18px;
-
-    top:58px;
-
-    margin:0;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:7px;
   }
 
 
@@ -1010,9 +1020,11 @@ img {
 
     height:64px;
 
-    top:10px;
+    top:50%;
 
     right:10px;
+
+    transform:translateY(-50%);
 
     font-size:24px;
   }
@@ -1023,12 +1035,6 @@ img {
     right:10px;
 
     min-width:190px;
-  }
-
-  .language-switcher {
-    left:14px;
-
-    top:54px;
   }
 
   .hero-meta,
