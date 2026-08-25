@@ -85,6 +85,7 @@ img {
   display:flex;
   align-items:center;
   gap:25px;
+  transform:translateX(30px);
 }
 
 .main-navigation a {
