@@ -194,17 +194,20 @@ img {
    ========================= */
 
 .language-switcher {
-  display:flex;
+  position:absolute;
 
+  left:18px;
+  top:70px;
+
+  margin:0;
+
+  display:flex;
   align-items:center;
 
   gap:7px;
 
-  flex-shrink:0;
-
   font-size:9px;
-
-  letter-spacing:.15em;
+  line-height:1;
 }
 
 .language-switcher button {
