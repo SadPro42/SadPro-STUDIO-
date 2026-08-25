@@ -84,7 +84,12 @@ img {
 .main-navigation {
   display:flex;
   align-items:center;
-  gap:15px;
+  gap:0;
+}
+
+.main-navigation a {
+  width:100px;
+  text-align:center;
 }
 
 .main-navigation a {
