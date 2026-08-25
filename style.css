@@ -903,7 +903,7 @@ img {
   /* HERO */
 
   .hero {
-    min-height:55vh;
+    min-height:20vh;
 
     padding:45px 20px 55px;
   }
