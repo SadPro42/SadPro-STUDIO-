@@ -10,7 +10,7 @@
   --gray:#8c877e;
   --line:rgba(232,223,209,.22);
 
-  --header-height:125px;
+  --header-height:105px;
 }
 
 
@@ -84,7 +84,7 @@ img {
   display:flex;
   flex-direction:column;
 
-  align-items:flex-start;
+  align-items:flex-end;
   justify-content:center;
 
   flex-shrink:0;
@@ -107,15 +107,18 @@ img {
 
 
 /* =========================
-   LANGUAGE
+   LANGUAGE SWITCHER
    ========================= */
 
 .language-switcher {
   display:flex;
 
   align-items:center;
+  justify-content:flex-end;
 
   gap:7px;
+
+  width:100%;
 
   margin-top:5px;
 
@@ -198,7 +201,9 @@ img {
 }
 
 
-/* underline */
+/* =========================
+   MENU UNDERLINE
+   ========================= */
 
 .main-navigation a::before {
   content:"";
@@ -225,7 +230,9 @@ img {
 }
 
 
-/* active */
+/* =========================
+   ACTIVE ITEM
+   ========================= */
 
 .main-navigation a.active {
   color:var(--cream);
@@ -237,7 +244,7 @@ img {
 
 
 /* =========================
-   MOBILE BUTTON
+   MOBILE MENU BUTTON
    ========================= */
 
 .menu-toggle {
@@ -772,11 +779,9 @@ img {
 
 @media(max-width:850px) {
 
-  /* HEADER */
-
   .site-header {
-    height:150px;
-    min-height:150px;
+    height:100px;
+    min-height:100px;
 
     padding:16px 18px;
 
@@ -787,7 +792,7 @@ img {
   }
 
 
-  /* LOGO */
+  /* LOGO + LANGUAGE */
 
   .header-brand {
     width:80px;
@@ -796,18 +801,16 @@ img {
 
     flex-direction:column;
 
-    align-items:flex-start;
+    align-items:flex-end;
     justify-content:center;
   }
 
-
-  /* LANGUAGE */
-
   .language-switcher {
-    margin-top:5px;
-margin-left:50px;
+    width:100%;
 
-    font-size:9px;
+    margin-top:5px;
+
+    justify-content:flex-end;
   }
 
 
@@ -884,7 +887,7 @@ margin-left:50px;
   }
 
 
-  /* MOBILE BUTTON */
+  /* MENU BUTTON */
 
   .menu-toggle {
     display:flex;
@@ -904,7 +907,7 @@ margin-left:50px;
   /* HERO */
 
   .hero {
-    min-height:20vh;
+    min-height:55vh;
 
     padding:45px 20px 55px;
   }
@@ -996,6 +999,16 @@ margin-left:50px;
     min-height:100px;
 
     padding:14px;
+  }
+
+  .header-brand {
+    width:80px;
+  }
+
+  .language-switcher {
+    width:100%;
+
+    justify-content:flex-end;
   }
 
 
