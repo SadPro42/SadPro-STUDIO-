@@ -9,7 +9,8 @@
   --brown:#403127;
   --gray:#8c877e;
   --line:rgba(232,223,209,.22);
-  --header-height:130px;
+
+  --header-height:105px;
 }
 
 
@@ -62,7 +63,6 @@ img {
 
   display:flex;
   align-items:center;
-  justify-content:space-between;
 
   padding:0 32px;
 
@@ -78,52 +78,50 @@ img {
    LOGO + LANGUAGE
    ========================= */
 
-.logo {
+.header-brand {
   display:flex;
-
   flex-direction:column;
 
-  align-items:center;
+  align-items:flex-start;
   justify-content:center;
 
   width:80px;
 
-  position:relative;
+  flex-shrink:0;
+}
+
+
+/* LOGO */
+
+.logo {
+  display:block;
+
+  width:80px;
 
   flex-shrink:0;
 }
 
-.logo span {
-  font-size:8px;
+.logo img {
+  display:block;
 
-  color:var(--rust);
-
-  vertical-align:top;
-
-  margin-left:2px;
+  width:100%;
+  height:auto;
 }
 
 
-/* =========================
-   LANGUAGE SWITCHER
-   ========================= */
+/* LANGUAGE */
 
 .language-switcher {
   display:flex;
 
   align-items:center;
-  justify-content:center;
+  justify-content:flex-start;
 
   gap:7px;
 
-  margin-top:6px;
-
-  position:static;
-
-  flex-shrink:0;
+  margin-top:5px;
 
   font-size:9px;
-
   line-height:1;
 
   letter-spacing:.15em;
@@ -139,6 +137,8 @@ img {
   cursor:pointer;
 
   font-size:9px;
+
+  line-height:1;
 
   letter-spacing:.15em;
 }
@@ -158,9 +158,12 @@ img {
 
   align-items:center;
 
-  gap:18px;
+  justify-content:center;
 
-  margin-left:80px;
+  gap:12px;
+
+  margin-left:auto;
+  margin-right:60px;
 }
 
 .main-navigation a {
@@ -193,12 +196,15 @@ img {
   transition:color .25s ease;
 }
 
+
+/* eventuale <br> */
+
 .main-navigation a br {
   display:block;
 }
 
 
-/* linea sotto voce */
+/* LINEA SOTTO LA VOCE */
 
 .main-navigation a::before {
   content:"";
@@ -225,7 +231,7 @@ img {
 }
 
 
-/* voce attiva */
+/* VOCE ATTIVA */
 
 .main-navigation a.active {
   color:var(--cream);
@@ -246,14 +252,12 @@ img {
   position:absolute;
 
   top:50%;
-  right:18px;
+  right:14px;
 
   transform:translateY(-50%);
 
-  z-index:300;
-
-  width:46px;
-  height:46px;
+  width:68px;
+  height:68px;
 
   border:1px solid var(--line);
 
@@ -266,7 +270,7 @@ img {
   align-items:center;
   justify-content:center;
 
-  font-size:18px;
+  font-size:26px;
 
   backdrop-filter:blur(12px);
 
@@ -776,10 +780,13 @@ img {
 
 @media(max-width:850px) {
 
-  .site-header {
-    height:130px;
+  /* =====================
+     HEADER MOBILE
+     ===================== */
 
-    min-height:130px;
+  .site-header {
+    height:100px;
+    min-height:100px;
 
     padding:18px;
 
@@ -787,11 +794,9 @@ img {
 
     display:flex;
 
-    justify-content:flex-start;
-
     align-items:center;
 
-    flex-wrap:wrap;
+    justify-content:flex-start;
   }
 
 
@@ -799,12 +804,25 @@ img {
      LOGO MOBILE
      ===================== */
 
-  .logo {
+  .header-brand {
     width:80px;
 
     align-items:flex-start;
 
     justify-content:center;
+  }
+
+
+  /* =====================
+     LANGUAGE MOBILE
+     ===================== */
+
+  .language-switcher {
+    margin-top:5px;
+
+    gap:7px;
+
+    font-size:9px;
   }
 
 
@@ -817,8 +835,7 @@ img {
 
     position:fixed;
 
-    top:88px;
-
+    top:118px;
     right:18px;
 
     z-index:250;
@@ -889,7 +906,7 @@ img {
 
 
   /* =====================
-     BOTTONE MENU
+     BOTTONE MENU MOBILE
      ===================== */
 
   .menu-toggle {
@@ -898,23 +915,19 @@ img {
     position:absolute;
 
     top:50%;
-
     right:14px;
 
     transform:translateY(-50%);
 
     width:68px;
-
     height:68px;
-
-    z-index:300;
 
     font-size:26px;
   }
 
 
   /* =====================
-     HERO
+     HERO MOBILE
      ===================== */
 
   .hero {
@@ -955,7 +968,7 @@ img {
 
 
   /* =====================
-     ABOUT
+     ABOUT MOBILE
      ===================== */
 
   .about-block {
@@ -977,7 +990,7 @@ img {
 
 
   /* =====================
-     CONTACT
+     CONTACT MOBILE
      ===================== */
 
   .contact-layout {
@@ -988,7 +1001,7 @@ img {
 
 
   /* =====================
-     FOOTER
+     FOOTER MOBILE
      ===================== */
 
   .site-footer {
@@ -1015,13 +1028,21 @@ img {
 
 @media(max-width:450px) {
 
+  .site-header {
+    height:100px;
+    min-height:100px;
+
+    padding:14px;
+  }
+
+
+  /* MENU BUTTON */
+
   .menu-toggle {
     width:64px;
-
     height:64px;
 
     top:50%;
-
     right:10px;
 
     transform:translateY(-50%);
@@ -1029,13 +1050,19 @@ img {
     font-size:24px;
   }
 
+
+  /* MENU DROPDOWN */
+
   .main-navigation {
-    top:78px;
+    top:112px;
 
     right:10px;
 
     min-width:190px;
   }
+
+
+  /* HERO */
 
   .hero-meta,
   .page-meta {
