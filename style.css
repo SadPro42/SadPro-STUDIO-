@@ -39,7 +39,7 @@ img{display:block;width:100%}
 .portfolio-grid{display:grid;grid-template-columns: repeat(3, 1fr);gap:2px;background:var(--black)}
 .portfolio-item{position:relative;overflow:hidden;aspect-ratio:4/5;background:var(--brown)}
 .portfolio-item img{width:100%;height:100%;object-fit:cover;filter:saturate(.7) contrast(1.05);transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .5s ease}
-.image-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:25px;background:rgba(0,0,0,.75);opacity:0;transition:opacity .35s ease}
+.image-overlay {position: absolute;inset:0;display: flex;flex-direction: column;justify-content: center;align-items: center;gap: 12px;padding: 25px;background: rgba(0, 0, 0, 0.75);opacity: 0;transition: opacity 0.35s ease;}
 .project-number{font-size:9px;letter-spacing:.2em;color:var(--rust)}
 .project-title{font-size:14px;letter-spacing:.16em;font-weight:600}
 .portfolio-item:hover img{transform:scale(1.045);filter:saturate(.85) contrast(1.1)}
