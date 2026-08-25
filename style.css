@@ -56,6 +56,7 @@ img {
 
   display:flex;
   align-items:center;
+  justify-content:space-between;
 
   padding:0 32px;
 
@@ -74,8 +75,8 @@ img {
   display:flex;
   align-items:center;
   width:80px;
-  flex-shrink:0;
   position:relative;
+  flex-shrink:0;
 }
 
 .logo span {
@@ -87,23 +88,17 @@ img {
 
 
 /* =========================
-   NAVIGAZIONE DESKTOP
+   DESKTOP MENU
    ========================= */
 
 .main-navigation {
   display:flex;
   align-items:center;
 
-  /* distanza uguale tra tutti gli item */
-  gap:10px;
+  gap:18px;
 
-  /* il menu prende lo spazio centrale */
-  flex:1;
-
-  justify-content:center;
-
-  /* 10px di distanza dal language switcher */
-  margin-right:10px;
+  /* sposta il menu verso destra */
+  margin-left:80px;
 }
 
 .main-navigation a {
@@ -113,7 +108,6 @@ img {
   align-items:center;
   justify-content:center;
 
-  /* tutte le voci hanno la stessa larghezza */
   width:100px;
   height:40px;
 
@@ -137,9 +131,6 @@ img {
 .main-navigation a br {
   display:block;
 }
-
-
-/* linea sotto la voce */
 
 .main-navigation a::before {
   content:"";
@@ -165,9 +156,6 @@ img {
   width:100%;
 }
 
-
-/* Pagina attiva */
-
 .main-navigation a.active {
   color:var(--cream);
 }
@@ -178,13 +166,12 @@ img {
 
 
 /* =========================
-   LANGUAGE SWITCHER
+   LANGUAGE
    ========================= */
 
 .language-switcher {
   display:flex;
   align-items:center;
-
   gap:7px;
 
   flex-shrink:0;
@@ -208,6 +195,48 @@ img {
 .language-switcher button:hover,
 .language-switcher button.active {
   color:var(--cream);
+}
+
+
+/* =========================
+   MOBILE MENU BUTTON
+   ========================= */
+
+.menu-toggle {
+  display:none;
+
+  position:fixed;
+
+  top:18px;
+  right:18px;
+
+  z-index:300;
+
+  width:46px;
+  height:46px;
+
+  border:1px solid var(--line);
+
+  background:rgba(18,17,15,.94);
+
+  color:var(--cream);
+
+  cursor:pointer;
+
+  align-items:center;
+  justify-content:center;
+
+  font-size:18px;
+
+  backdrop-filter:blur(12px);
+
+  box-shadow:
+    0 8px 25px rgba(0,0,0,.25);
+}
+
+.menu-toggle:hover {
+  border-color:var(--rust);
+  color:var(--rust);
 }
 
 
@@ -684,87 +713,108 @@ img {
 
   .site-header {
     height:auto;
-
     min-height:70px;
 
-    padding:14px 18px;
+    padding:18px;
 
-    flex-wrap:wrap;
-
-    gap:10px;
-  }
-
-
-  /* logo */
-
-  .logo {
-    width:70px;
-  }
-
-
-  /* language */
-
-  .language-switcher {
-    margin-left:auto;
-  }
-
-
-  /* menu flottante e compatto */
-
-  .main-navigation {
-    order:3;
-
-    flex:none;
-
-    width:auto;
-
-    max-width:100%;
-
-    margin:0;
-
-    padding:6px 8px;
-
-    gap:6px;
+    display:flex;
 
     justify-content:flex-start;
 
-    overflow-x:auto;
+    flex-wrap:wrap;
+  }
+
+
+  /* nasconde menu desktop */
+
+  .main-navigation {
+    display:none;
+
+    position:fixed;
+
+    top:76px;
+    right:18px;
+
+    z-index:250;
+
+    width:auto;
+
+    min-width:180px;
+
+    margin:0;
+
+    padding:12px;
+
+    flex-direction:column;
+
+    align-items:stretch;
+
+    gap:4px;
+
+    background:rgba(18,17,15,.97);
 
     border:1px solid var(--line);
 
-    background:rgba(18,17,15,.75);
+    box-shadow:
+      0 12px 35px rgba(0,0,0,.4);
 
-    backdrop-filter:blur(10px);
-
-    scrollbar-width:none;
-  }
-
-  .main-navigation::-webkit-scrollbar {
-    display:none;
+    backdrop-filter:blur(15px);
   }
 
 
-  /* item mobile */
+  /* menu aperto */
+
+  .main-navigation.is-open {
+    display:flex;
+  }
+
+
+  /* voci mobile */
 
   .main-navigation a {
-    width:82px;
+    width:100%;
 
-    height:34px;
+    height:38px;
 
-    flex:0 0 82px;
+    flex:none;
+
+    justify-content:flex-start;
+
+    padding:0 12px;
+
+    text-align:left;
 
     font-size:11px;
 
-    letter-spacing:.1em;
+    letter-spacing:.12em;
+  }
 
-    line-height:1.1;
+  .main-navigation a::before {
+    left:12px;
+    bottom:2px;
+
+    width:0;
+  }
+
+  .main-navigation a:hover::before,
+  .main-navigation a.active::before {
+    width:calc(100% - 24px);
   }
 
 
-  /* linea mobile */
+  /* quadratino flottante */
 
-  .main-navigation a::before {
-    bottom:0;
+  .menu-toggle {
+    display:flex;
+  }
+
+
+  /* lingua */
+
+  .language-switcher {
+    margin-left:auto;
+
+    margin-right:60px;
   }
 
 
@@ -856,6 +906,19 @@ img {
 
 @media(max-width:450px) {
 
+  .menu-toggle {
+    top:14px;
+    right:14px;
+
+    width:42px;
+    height:42px;
+  }
+
+  .main-navigation {
+    top:68px;
+    right:14px;
+  }
+
   .hero-meta,
   .page-meta {
     font-size:8px;
@@ -863,30 +926,10 @@ img {
 
   .hero-title p {
     font-size:9px;
-
     line-height:1.5;
   }
 
   .image-overlay {
     padding:18px;
-  }
-
-
-  /* menu ancora più compatto */
-
-  .main-navigation {
-    gap:4px;
-
-    padding:5px 6px;
-  }
-
-  .main-navigation a {
-    width:76px;
-
-    flex-basis:76px;
-
-    height:32px;
-
-    font-size:10px;
   }
 }
