@@ -1,7 +1,7 @@
 const translations = {
   en: {
     home:"HOME", portfolio:"COMPLETE PORTFOLIO", shop:"SHOP", about:"ABOUT", contacts:"CONTACTS",
-    heroDescription:"Independent creative studio.",
+    heroDescription:"Independent creative studio based in Monza, Italy.",
     project1:"PROJECT ONE", project2:"PROJECT TWO", project3:"PROJECT THREE",
     project4:"PROJECT FOUR", project5:"PROJECT FIVE", project6:"PROJECT SIX",
     portfolioTitle:"COMPLETE PORTFOLIO",
@@ -17,7 +17,7 @@ const translations = {
   },
   it: {
     home:"HOME", portfolio:"COMPLETE PORTFOLIO", shop:"SHOP", about:"ABOUT", contacts:"CONTATTI",
-    heroDescription:"Studio creativo indipendente.",
+    heroDescription:"Studio creativo indipendente con sede a Monza.",
     project1:"PROGETTO UNO", project2:"PROGETTO DUE", project3:"PROGETTO TRE",
     project4:"PROGETTO QUATTRO", project5:"PROGETTO CINQUE", project6:"PROGETTO SEI",
     portfolioTitle:"COMPLETE PORTFOLIO",
