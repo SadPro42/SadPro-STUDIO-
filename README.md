@@ -1,17 +1,17 @@
-# AZIENDA — V2 GitHub Pages
+# SADPRO42 — V2 GitHub Pages
 
-## Pubblicazione
-1. Crea un repository GitHub.
-2. Carica i file nella root.
-3. Vai in Settings → Pages.
-4. Seleziona Deploy from a branch.
-5. Seleziona `main` e `/ (root)`.
+## Publication
+1. Create a GitHub repository.
+2. Upload the project files to the repository root.
+3. Go to Settings → Pages.
+4. Select Deploy from a branch.
+5. Select `main` and `/ (root)`.
 
-## Da sostituire
-- Le immagini Unsplash sono placeholder.
-- In `shop.html` modifica il redirect con il tuo URL Gumroad.
-- In `contacts.html` sostituisci `YOUR_FORM_ID` con il tuo endpoint Formspree.
-- Sostituisci i link Instagram e Pinterest con quelli reali.
+## To replace
+- The Unsplash images are placeholders.
+- In `shop.html`, replace the Gumroad redirect with your own URL.
+- In `contacts.html`, replace `YOUR_FORM_ID` with your Formspree endpoint.
+- Replace the Instagram and Pinterest links with the real profiles.
 
 ## Email
-L'indirizzo email non è inserito nel codice. Formspree gestisce l'invio del form verso la casella configurata nel relativo account.
+The email address is not included in the code. Formspree handles form delivery to the mailbox configured in the corresponding account.
