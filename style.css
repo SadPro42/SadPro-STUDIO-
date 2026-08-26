@@ -1,17 +1,13 @@
 :root {
   --black: #12110f;
   --black-soft: #1b1815;
-
   --cream: #e8dfd1;
   --cream-dark: #cfc3b1;
-
   --rust: #914d32;
   --rust-dark: #6d3826;
-
   --olive: #5b5d42;
   --brown: #403127;
   --gray: #8c877e;
-
   --line: rgba(232, 223, 209, .22);
 
   --header-height: 105px;
@@ -35,12 +31,7 @@ html {
 body {
   background: var(--black);
   color: var(--cream);
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
+  font-family: Arial, Helvetica, sans-serif;
   min-height: 100vh;
 }
 
@@ -63,24 +54,6 @@ img {
    HEADER
    ========================================================= */
 
-/*
-   IMPORTANT:
-
-   Il vetro non viene simulato con una grande macchia sfocata.
-
-   La struttura è:
-
-   BACKGROUND
-      ↓
-   LIQUID SHAPES
-      ↓
-   GLASS SURFACE
-      ↓
-   SPECULAR HIGHLIGHTS
-      ↓
-   CONTENT
-*/
-
 .site-header {
   height: var(--header-height);
 
@@ -93,280 +66,33 @@ img {
 
   padding: 0 32px;
 
-  overflow: hidden;
-
-  isolation: isolate;
-
-  /*
-     SMOKED GLASS
-  */
-
   background:
     linear-gradient(
       110deg,
-      rgba(18, 17, 15, .82),
-      rgba(18, 17, 15, .68),
-      rgba(18, 17, 15, .80)
+      rgba(18, 17, 15, .90),
+      rgba(18, 17, 15, .78),
+      rgba(18, 17, 15, .88)
     );
 
-  /*
-     Questo è il blur del CONTENUTO SOTTO il vetro,
-     non delle forme liquide.
-  */
+  border-bottom: 1px solid var(--line);
 
+  overflow: hidden;
+  isolation: isolate;
+
+  /*
+   * Il vetro NON sfoca le forme liquide.
+   * Lasciamo il backdrop molto leggero.
+   */
   backdrop-filter:
-    blur(12px)
-    saturate(125%);
+    blur(2px)
+    saturate(110%);
 
   -webkit-backdrop-filter:
-    blur(12px)
-    saturate(125%);
-
-  /*
-     Glass edge
-  */
-
-  border-top:
-    1px solid rgba(255, 255, 255, .025);
-
-  border-bottom:
-    1px solid rgba(232, 223, 209, .18);
+    blur(2px)
+    saturate(110%);
 
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, .045),
-    inset 0 -1px 0 rgba(0, 0, 0, .40),
-    0 8px 35px rgba(0, 0, 0, .18);
-}
-
-
-/* =========================================================
-   LIQUID MASS — MAIN
-   ========================================================= */
-
-/*
-   Nessun blur.
-
-   Le forme devono essere riconoscibili.
-   La morbidezza viene dai gradienti stessi.
-*/
-
-.site-header::before {
-  content: "";
-
-  position: absolute;
-
-  z-index: 1;
-
-  pointer-events: none;
-
-  width: 145%;
-  height: 420%;
-
-  left: -22%;
-  top: -160%;
-
-  background:
-
-    /* =====================================================
-       CREAM SHAPE
-       ===================================================== */
-
-    radial-gradient(
-      ellipse 19% 34% at 9% 50%,
-
-      rgba(232, 223, 209, .22) 0%,
-      rgba(232, 223, 209, .19) 24%,
-      rgba(232, 223, 209, .11) 48%,
-      rgba(232, 223, 209, .025) 70%,
-      transparent 75%
-    ),
-
-    /* =====================================================
-       RUST SHAPE
-       ===================================================== */
-
-    radial-gradient(
-      ellipse 25% 31% at 39% 37%,
-
-      rgba(145, 77, 50, .22) 0%,
-      rgba(145, 77, 50, .18) 23%,
-      rgba(145, 77, 50, .10) 48%,
-      rgba(145, 77, 50, .025) 69%,
-      transparent 76%
-    ),
-
-    /* =====================================================
-       OLIVE SHAPE
-       ===================================================== */
-
-    radial-gradient(
-      ellipse 21% 38% at 70% 65%,
-
-      rgba(91, 93, 66, .20) 0%,
-      rgba(91, 93, 66, .16) 25%,
-      rgba(91, 93, 66, .08) 48%,
-      rgba(91, 93, 66, .02) 68%,
-      transparent 75%
-    ),
-
-    /* =====================================================
-       BROWN DEPTH
-       ===================================================== */
-
-    radial-gradient(
-      ellipse 24% 32% at 94% 26%,
-
-      rgba(64, 49, 39, .28) 0%,
-      rgba(64, 49, 39, .19) 26%,
-      rgba(64, 49, 39, .08) 50%,
-      transparent 73%
-    );
-
-  /*
-     ZERO BLUR.
-
-     Questo è fondamentale.
-  */
-
-  filter: none;
-
-  opacity: .95;
-
-  transform-origin: 50% 50%;
-
-  animation:
-    liquidMass
-    38s
-    cubic-bezier(.45, .05, .55, .95)
-    infinite alternate;
-
-  will-change: transform;
-}
-
-
-/* =========================================================
-   SECOND LIQUID SURFACE
-   ========================================================= */
-
-/*
-   Questa superficie non aggiunge una "nuvola".
-
-   Aggiunge riflessi e variazioni di densità.
-*/
-
-.site-header::after {
-  content: "";
-
-  position: absolute;
-
-  z-index: 2;
-
-  pointer-events: none;
-
-  width: 150%;
-  height: 400%;
-
-  left: -25%;
-  top: -150%;
-
-  background:
-
-    /* -----------------------------------------------------
-       GLASS HIGHLIGHT
-       ----------------------------------------------------- */
-
-    linear-gradient(
-      116deg,
-
-      transparent 0%,
-
-      transparent 18%,
-
-      rgba(255, 248, 237, .045) 23%,
-
-      rgba(255, 248, 237, .095) 25%,
-
-      rgba(255, 248, 237, .025) 27%,
-
-      transparent 32%,
-
-      transparent 100%
-    ),
-
-    /* -----------------------------------------------------
-       RUST REFLECTION
-       ----------------------------------------------------- */
-
-    linear-gradient(
-      102deg,
-
-      transparent 20%,
-
-      transparent 38%,
-
-      rgba(145, 77, 50, .045) 43%,
-
-      rgba(145, 77, 50, .095) 47%,
-
-      rgba(145, 77, 50, .025) 51%,
-
-      transparent 57%,
-
-      transparent 100%
-    ),
-
-    /* -----------------------------------------------------
-       OLIVE REFLECTION
-       ----------------------------------------------------- */
-
-    linear-gradient(
-      82deg,
-
-      transparent 45%,
-
-      transparent 62%,
-
-      rgba(91, 93, 66, .035) 67%,
-
-      rgba(91, 93, 66, .075) 70%,
-
-      rgba(91, 93, 66, .02) 73%,
-
-      transparent 79%
-    );
-
-  /*
-     Nessun blur significativo.
-  */
-
-  filter: none;
-
-  opacity: .80;
-
-  mix-blend-mode: screen;
-
-  animation:
-    glassReflection
-    52s
-    cubic-bezier(.45, .05, .55, .95)
-    infinite alternate-reverse;
-
-  will-change: transform;
-}
-
-
-/* =========================================================
-   GLASS INTERNAL HIGHLIGHT
-   ========================================================= */
-
-/*
-   Un bordo interno sottilissimo crea la sensazione
-   di una superficie vera davanti alle forme.
-*/
-
-.site-header {
-  --glass-highlight:
-    rgba(255, 255, 255, .045);
+    inset 0 -1px 0 rgba(255, 255, 255, .025);
 }
 
 
@@ -389,48 +115,14 @@ img {
 
 .logo {
   display: block;
-
   width: 80px;
-
   flex-shrink: 0;
 }
 
 .logo img {
   display: block;
-
   width: 100%;
   height: auto;
-}
-
-
-/* =========================================================
-   LOGO GLASS REFLECTION
-   ========================================================= */
-
-.site-header .header-brand::before {
-  content: "";
-
-  position: absolute;
-
-  width: 85px;
-  height: 34px;
-
-  left: -12px;
-  top: 8px;
-
-  border-radius: 50%;
-
-  background:
-    linear-gradient(
-      110deg,
-      transparent 10%,
-      rgba(255, 255, 255, .045) 45%,
-      transparent 75%
-    );
-
-  opacity: .65;
-
-  pointer-events: none;
 }
 
 
@@ -538,11 +230,9 @@ img {
   width: 68px;
   height: 68px;
 
-  border:
-    1px solid rgba(232, 223, 209, .20);
+  border: 1px solid var(--line);
 
-  background:
-    rgba(18, 17, 15, .72);
+  background: rgba(18, 17, 15, .90);
 
   color: var(--cream);
 
@@ -555,137 +245,426 @@ img {
 
   z-index: 30;
 
-  backdrop-filter:
-    blur(10px)
-    saturate(120%);
-
-  -webkit-backdrop-filter:
-    blur(10px)
-    saturate(120%);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, .045),
     0 8px 25px rgba(0, 0, 0, .25);
-
-  transition:
-    border-color .25s ease,
-    color .25s ease,
-    background .25s ease;
 }
 
 .menu-toggle:hover {
   border-color: var(--rust);
-
   color: var(--rust);
+}
+
+
+/* =========================================================
+   LIQUID LIGHT — DEFINITE
+   ========================================================= */
+
+/*
+   IMPORTANTE:
+   Nessun blur.
+   Le forme rimangono leggibili e definite.
+
+   L'effetto morbido viene creato dagli stessi
+   radial-gradient, non da filter: blur().
+*/
+
+
+.site-header::before {
+  content: "";
+
+  position: absolute;
+
+  z-index: 1;
+
+  pointer-events: none;
+
+  width: 150%;
+  height: 300%;
+
+  left: -25%;
+  top: -105%;
 
   background:
-    rgba(18, 17, 15, .82);
+
+    /* =====================================================
+       CREAM
+       ===================================================== */
+
+    radial-gradient(
+      ellipse 23% 48% at 8% 50%,
+
+      rgba(232, 223, 209, .27) 0%,
+
+      rgba(232, 223, 209, .23) 16%,
+
+      rgba(232, 223, 209, .15) 30%,
+
+      rgba(232, 223, 209, .07) 43%,
+
+      rgba(232, 223, 209, .025) 53%,
+
+      transparent 63%
+    ),
+
+    /* =====================================================
+       RUST
+       ===================================================== */
+
+    radial-gradient(
+      ellipse 27% 43% at 42% 38%,
+
+      rgba(145, 77, 50, .26) 0%,
+
+      rgba(145, 77, 50, .22) 17%,
+
+      rgba(145, 77, 50, .14) 32%,
+
+      rgba(145, 77, 50, .06) 46%,
+
+      rgba(145, 77, 50, .02) 55%,
+
+      transparent 65%
+    ),
+
+    /* =====================================================
+       OLIVE
+       ===================================================== */
+
+    radial-gradient(
+      ellipse 24% 51% at 72% 65%,
+
+      rgba(91, 93, 66, .23) 0%,
+
+      rgba(91, 93, 66, .19) 17%,
+
+      rgba(91, 93, 66, .12) 32%,
+
+      rgba(91, 93, 66, .05) 46%,
+
+      rgba(91, 93, 66, .018) 56%,
+
+      transparent 66%
+    ),
+
+    /* =====================================================
+       BROWN
+       ===================================================== */
+
+    radial-gradient(
+      ellipse 29% 41% at 94% 27%,
+
+      rgba(64, 49, 39, .34) 0%,
+
+      rgba(64, 49, 39, .27) 19%,
+
+      rgba(64, 49, 39, .16) 36%,
+
+      rgba(64, 49, 39, .07) 52%,
+
+      transparent 68%
+    );
+
+  /*
+   * ZERO BLUR
+   */
+
+  filter: none;
+
+  opacity: .95;
+
+  transform-origin: 50% 50%;
+
+  animation:
+    editorialLiquidA
+    32s
+    cubic-bezier(.45, .05, .55, .95)
+    infinite alternate;
+
+  will-change: transform;
 }
 
 
 /* =========================================================
-   LIQUID MOVEMENT
+   SECOND LIQUID LAYER
    ========================================================= */
 
-@keyframes liquidMass {
+.site-header::after {
+  content: "";
 
-  0% {
-    transform:
-      translate3d(-5%, 2%, 0)
-      rotate(-1deg)
-      scale(1.015, .985);
-  }
+  position: absolute;
 
-  16% {
-    transform:
-      translate3d(-2%, -1%, 0)
-      rotate(-.35deg)
-      scale(1.025, .99);
-  }
+  z-index: 2;
 
-  32% {
-    transform:
-      translate3d(3%, -3%, 0)
-      rotate(.55deg)
-      scale(1.035, .975);
-  }
+  pointer-events: none;
 
-  48% {
-    transform:
-      translate3d(7%, 0%, 0)
-      rotate(1deg)
-      scale(.985, 1.025);
-  }
+  width: 155%;
+  height: 320%;
 
-  64% {
-    transform:
-      translate3d(5%, 4%, 0)
-      rotate(.25deg)
-      scale(1.025, .99);
-  }
+  left: -27%;
+  top: -112%;
 
-  80% {
-    transform:
-      translate3d(0%, 5%, 0)
-      rotate(-.75deg)
-      scale(1.01, 1.03);
-  }
+  background:
 
-  100% {
-    transform:
-      translate3d(-6%, -1%, 0)
-      rotate(.35deg)
-      scale(1.03, .985);
-  }
+    /* =====================================================
+       CREAM REFLECTION
+       ===================================================== */
+
+    radial-gradient(
+      ellipse 17% 39% at 23% 70%,
+
+      rgba(255, 248, 237, .18) 0%,
+
+      rgba(255, 248, 237, .13) 18%,
+
+      rgba(255, 248, 237, .07) 34%,
+
+      rgba(255, 248, 237, .025) 49%,
+
+      transparent 62%
+    ),
+
+    /* =====================================================
+       DARK RUST
+       ===================================================== */
+
+    radial-gradient(
+      ellipse 24% 35% at 62% 27%,
+
+      rgba(109, 56, 38, .23) 0%,
+
+      rgba(109, 56, 38, .18) 20%,
+
+      rgba(109, 56, 38, .10) 37%,
+
+      rgba(109, 56, 38, .035) 52%,
+
+      transparent 66%
+    ),
+
+    /* =====================================================
+       WARM BEIGE
+       ===================================================== */
+
+    radial-gradient(
+      ellipse 23% 44% at 82% 76%,
+
+      rgba(207, 195, 177, .16) 0%,
+
+      rgba(207, 195, 177, .11) 20%,
+
+      rgba(207, 195, 177, .06) 38%,
+
+      rgba(207, 195, 177, .02) 53%,
+
+      transparent 66%
+    ),
+
+    /* =====================================================
+       RUST ACCENT
+       ===================================================== */
+
+    radial-gradient(
+      ellipse 15% 27% at 48% 82%,
+
+      rgba(145, 77, 50, .18) 0%,
+
+      rgba(145, 77, 50, .13) 20%,
+
+      rgba(145, 77, 50, .06) 39%,
+
+      rgba(145, 77, 50, .02) 54%,
+
+      transparent 68%
+    );
+
+  /*
+   * ZERO BLUR
+   */
+
+  filter: none;
+
+  opacity: .72;
+
+  mix-blend-mode: screen;
+
+  animation:
+    editorialLiquidB
+    43s
+    cubic-bezier(.37, .08, .63, .92)
+    infinite alternate-reverse;
+
+  will-change: transform;
 }
 
 
 /* =========================================================
-   GLASS REFLECTION MOVEMENT
+   SUBTLE LOGO HIGHLIGHT
    ========================================================= */
 
-@keyframes glassReflection {
+.site-header .header-brand::before {
+  content: "";
+
+  position: absolute;
+
+  width: 80px;
+  height: 35px;
+
+  left: -14px;
+  top: 8px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(255, 255, 255, .10),
+      transparent 70%
+    );
+
+  /*
+   * Solo questo piccolo highlight può essere
+   * leggermente morbido.
+   */
+
+  filter: blur(4px);
+
+  opacity: .40;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   CONTENT ABOVE EFFECT
+   ========================================================= */
+
+.site-header > * {
+  position: relative;
+
+  z-index: 10;
+}
+
+
+/* =========================================================
+   LIQUID MOVEMENT A
+   ========================================================= */
+
+@keyframes editorialLiquidA {
 
   0% {
     transform:
-      translate3d(7%, -3%, 0)
-      rotate(.8deg)
-      scale(1.01);
+      translate3d(-7%, 3%, 0)
+      rotate(-1.2deg)
+      scale(1);
   }
 
-  20% {
+  15% {
     transform:
-      translate3d(3%, -1%, 0)
-      rotate(.2deg)
-      scale(1.02, .99);
+      translate3d(-3%, -2%, 0)
+      rotate(.4deg)
+      scale(1.025, .985);
   }
 
-  40% {
+  30% {
     transform:
-      translate3d(-2%, 2%, 0)
+      translate3d(3%, -5%, 0)
+      rotate(1.2deg)
+      scale(1.035, .97);
+  }
+
+  45% {
+    transform:
+      translate3d(8%, -1%, 0)
       rotate(-.7deg)
-      scale(.99, 1.02);
+      scale(.98, 1.03);
   }
 
   60% {
     transform:
-      translate3d(-7%, 0%, 0)
-      rotate(.5deg)
-      scale(1.02, .99);
+      translate3d(5%, 5%, 0)
+      rotate(-1.1deg)
+      scale(1.025, .985);
   }
 
-  80% {
+  75% {
     transform:
-      translate3d(-3%, 4%, 0)
-      rotate(-.5deg)
-      scale(1.01, 1.02);
+      translate3d(-1%, 7%, 0)
+      rotate(.6deg)
+      scale(.985, 1.025);
+  }
+
+  88% {
+    transform:
+      translate3d(-8%, 2%, 0)
+      rotate(-.4deg)
+      scale(1.02, .99);
   }
 
   100% {
     transform:
-      translate3d(6%, -2%, 0)
-      rotate(.5deg)
+      translate3d(4%, -5%, 0)
+      rotate(1deg)
+      scale(1.035, .975);
+  }
+}
+
+
+/* =========================================================
+   LIQUID MOVEMENT B
+   ========================================================= */
+
+@keyframes editorialLiquidB {
+
+  0% {
+    transform:
+      translate3d(8%, -4%, 0)
+      rotate(1.2deg)
       scale(1.02);
+  }
+
+  16% {
+    transform:
+      translate3d(4%, 1%, 0)
+      rotate(-.5deg)
+      scale(.985, 1.025);
+  }
+
+  32% {
+    transform:
+      translate3d(-4%, 4%, 0)
+      rotate(-1deg)
+      scale(1.025, .98);
+  }
+
+  48% {
+    transform:
+      translate3d(-9%, -1%, 0)
+      rotate(.8deg)
+      scale(.98, 1.03);
+  }
+
+  64% {
+    transform:
+      translate3d(-3%, -6%, 0)
+      rotate(1.2deg)
+      scale(1.03, .98);
+  }
+
+  80% {
+    transform:
+      translate3d(6%, -2%, 0)
+      rotate(-.7deg)
+      scale(.99, 1.02);
+  }
+
+  100% {
+    transform:
+      translate3d(-2%, 5%, 0)
+      rotate(.6deg)
+      scale(1.025);
   }
 }
 
@@ -697,11 +676,11 @@ img {
 @media (min-width: 851px) {
 
   .site-header::before {
-    opacity: .92;
+    opacity: .95;
   }
 
   .site-header::after {
-    opacity: .72;
+    opacity: .70;
   }
 }
 
@@ -721,56 +700,46 @@ img {
     background:
       linear-gradient(
         110deg,
-        rgba(18, 17, 15, .88),
-        rgba(18, 17, 15, .76),
-        rgba(18, 17, 15, .87)
+        rgba(18, 17, 15, .92),
+        rgba(18, 17, 15, .80),
+        rgba(18, 17, 15, .90)
       );
 
     backdrop-filter:
-      blur(11px)
-      saturate(120%);
+      blur(2px)
+      saturate(110%);
 
     -webkit-backdrop-filter:
-      blur(11px)
-      saturate(120%);
+      blur(2px)
+      saturate(110%);
   }
-
-
-  /* -------------------------------------------------------
-     LIQUID
-     ------------------------------------------------------- */
 
   .site-header::before {
     width: 180%;
-    height: 400%;
+    height: 350%;
 
     left: -40%;
-    top: -145%;
+    top: -125%;
 
     filter: none;
 
-    opacity: .82;
+    opacity: .86;
 
-    animation-duration: 42s;
+    animation-duration: 38s;
   }
-
-
-  /* -------------------------------------------------------
-     REFLECTION
-     ------------------------------------------------------- */
 
   .site-header::after {
     width: 185%;
-    height: 410%;
+    height: 360%;
 
     left: -42%;
-    top: -150%;
+    top: -130%;
 
     filter: none;
 
-    opacity: .60;
+    opacity: .62;
 
-    animation-duration: 55s;
+    animation-duration: 48s;
   }
 
 
@@ -801,22 +770,18 @@ img {
     gap: 3px;
 
     background:
-      rgba(18, 17, 15, .88);
+      rgba(18, 17, 15, .95);
 
-    border:
-      1px solid rgba(232, 223, 209, .20);
+    border: 1px solid var(--line);
 
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, .035),
       0 12px 35px rgba(0, 0, 0, .4);
 
     backdrop-filter:
-      blur(15px)
-      saturate(120%);
+      blur(8px);
 
     -webkit-backdrop-filter:
-      blur(15px)
-      saturate(120%);
+      blur(8px);
   }
 
   .main-navigation.is-open {
@@ -849,11 +814,6 @@ img {
   .main-navigation a.active::before {
     width: calc(100% - 24px);
   }
-
-
-  /* =======================================================
-     MENU BUTTON
-     ======================================================= */
 
   .menu-toggle {
     display: flex;
@@ -981,18 +941,18 @@ img {
     background:
       linear-gradient(
         110deg,
-        rgba(18, 17, 15, .91),
-        rgba(18, 17, 15, .80),
-        rgba(18, 17, 15, .90)
+        rgba(18, 17, 15, .93),
+        rgba(18, 17, 15, .82),
+        rgba(18, 17, 15, .91)
       );
 
     backdrop-filter:
-      blur(9px)
-      saturate(115%);
+      blur(1px)
+      saturate(108%);
 
     -webkit-backdrop-filter:
-      blur(9px)
-      saturate(115%);
+      blur(1px)
+      saturate(108%);
   }
 
   .header-brand {
@@ -1019,48 +979,33 @@ img {
     width: 190px;
   }
 
-
-  /* -------------------------------------------------------
-     MOBILE LIQUID
-     ------------------------------------------------------- */
-
   .site-header::before {
     width: 220%;
-    height: 420%;
+    height: 380%;
 
     left: -60%;
-    top: -155%;
+    top: -135%;
 
-    opacity: .74;
+    opacity: .78;
 
     filter: none;
 
-    animation-duration: 46s;
+    animation-duration: 43s;
   }
-
-
-  /* -------------------------------------------------------
-     MOBILE REFLECTION
-     ------------------------------------------------------- */
 
   .site-header::after {
-    width: 225%;
-    height: 430%;
+    width: 220%;
+    height: 390%;
 
-    left: -62%;
-    top: -160%;
+    left: -60%;
+    top: -140%;
 
-    opacity: .48;
+    opacity: .55;
 
     filter: none;
 
-    animation-duration: 60s;
+    animation-duration: 55s;
   }
-
-
-  /* -------------------------------------------------------
-     TYPOGRAPHY
-     ------------------------------------------------------- */
 
   .hero-meta,
   .page-meta {
