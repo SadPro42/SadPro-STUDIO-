@@ -72,19 +72,16 @@ img {
   border-bottom: 1px solid var(--line);
 
   overflow: hidden;
+
   isolation: isolate;
 
   /*
-   * IMPORTANTE:
-   * nessun blur sul contenuto del fluido.
-   * Il vetro resta leggermente trasparente.
+   * NIENTE BLUR.
+   * Il liquido deve essere visibile.
    */
 
-  backdrop-filter:
-    saturate(115%);
-
-  -webkit-backdrop-filter:
-    saturate(115%);
+  backdrop-filter: saturate(115%);
+  -webkit-backdrop-filter: saturate(115%);
 
   box-shadow:
     inset 0 -1px 0 rgba(255, 255, 255, .025);
@@ -96,506 +93,501 @@ img {
    ========================================================= */
 
 /*
-   Le forme sono volutamente molto più definite.
+   Questi sono veri elementi HTML.
 
-   Non stiamo creando "luci".
-   Stiamo creando vere masse di materiale trasparente.
-
-   Ogni layer:
-   - ha una forma propria
-   - ha bordi organici
-   - si muove indipendentemente
-   - ha una trasparenza contenuta
+   Ogni fluido:
+   - è indipendente
+   - ha una forma diversa
+   - ha una propria animazione
+   - non usa blur
+   - ha circa 25-30% di presenza visiva
 */
 
-
-/* =========================================================
-   LIQUID MASS — CREAM
-   ========================================================= */
-
-.site-header::before {
-  content: "";
-
+.liquid {
   position: absolute;
+
+  pointer-events: none;
 
   z-index: 1;
 
-  pointer-events: none;
+  filter: none;
 
-  width: 75%;
-  height: 180%;
+  will-change:
+    transform,
+    border-radius;
 
-  left: -18%;
-  top: -42%;
+  /*
+   * Questo rende il colore trasparente
+   * senza creare l'effetto "nebbia".
+   */
+  opacity: .28;
 
-  border-radius:
-    63% 37% 56% 44%
-    /
-    42% 58% 47% 53%;
+  mix-blend-mode: screen;
+}
+
+
+/* =========================================================
+   CREAM LIQUID
+   ========================================================= */
+
+.liquid-cream {
+
+  width: 430px;
+  height: 230px;
+
+  left: -100px;
+  top: -95px;
 
   background:
-    linear-gradient(
-      120deg,
-      rgba(232, 223, 209, .04),
-      rgba(232, 223, 209, .22) 35%,
-      rgba(232, 223, 209, .16) 58%,
-      rgba(232, 223, 209, .035)
-    );
+    rgba(232, 223, 209, .95);
 
-  opacity: .95;
+  border-radius:
+    67% 33% 56% 44%
+    /
+    45% 61% 39% 55%;
 
-  transform-origin: 65% 50%;
+  transform:
+    rotate(-8deg);
 
   animation:
-    liquidCream
+    liquidCreamFlow
     24s
     cubic-bezier(.45, .05, .55, .95)
     infinite alternate;
-
-  will-change: transform, border-radius;
 }
 
 
 /* =========================================================
-   LIQUID OVERLAY
+   RUST LIQUID
    ========================================================= */
 
-.site-header::after {
-  content: "";
+.liquid-rust {
 
-  position: absolute;
+  width: 470px;
+  height: 210px;
 
-  z-index: 2;
-
-  pointer-events: none;
-
-  width: 100%;
-  height: 170%;
-
-  left: 15%;
-  top: -35%;
-
-  border-radius:
-    48% 52% 37% 63%
-    /
-    60% 38% 62% 40%;
+  left: 19%;
+  top: -70px;
 
   background:
+    rgba(145, 77, 50, .95);
 
-    /* RUST */
-    linear-gradient(
-      128deg,
-      transparent 0%,
-      rgba(145, 77, 50, .20) 23%,
-      rgba(145, 77, 50, .27) 40%,
-      rgba(145, 77, 50, .16) 58%,
-      transparent 76%
-    );
+  border-radius:
+    72% 28% 61% 39%
+    /
+    48% 62% 38% 52%;
 
-  opacity: .85;
-
-  mix-blend-mode: screen;
-
-  transform-origin: 40% 55%;
+  transform:
+    rotate(7deg);
 
   animation:
-    liquidRust
-    31s
+    liquidRustFlow
+    29s
     cubic-bezier(.37, .08, .63, .92)
     infinite alternate-reverse;
-
-  will-change: transform, border-radius;
 }
 
 
 /* =========================================================
-   THIRD LIQUID LAYER
+   OLIVE LIQUID
    ========================================================= */
 
-/*
-   Usiamo un elemento interno generato attraverso
-   il brand come layer visivo indipendente.
-*/
+.liquid-olive {
 
-.header-brand::after {
-  content: "";
+  width: 540px;
+  height: 190px;
 
-  position: absolute;
+  right: 5%;
+  bottom: -105px;
 
-  z-index: -1;
-
-  pointer-events: none;
-
-  width: 115vw;
-  height: 145px;
-
-  left: 10px;
-  top: 50%;
-
-  transform: translateY(-50%);
+  background:
+    rgba(91, 93, 66, .95);
 
   border-radius:
-    48% 52% 63% 37%
+    31% 69% 43% 57%
     /
-    55% 43% 57% 45%;
+    62% 38% 67% 33%;
 
-  background:
-    linear-gradient(
-      108deg,
-      transparent 8%,
-      rgba(91, 93, 66, .04) 22%,
-      rgba(91, 93, 66, .19) 43%,
-      rgba(91, 93, 66, .15) 57%,
-      rgba(91, 93, 66, .05) 70%,
-      transparent 88%
-    );
-
-  opacity: .9;
-
-  mix-blend-mode: screen;
+  transform:
+    rotate(-6deg);
 
   animation:
-    liquidOlive
-    37s
+    liquidOliveFlow
+    34s
     cubic-bezier(.45, .05, .55, .95)
     infinite alternate;
-
-  will-change: transform, border-radius;
 }
 
 
 /* =========================================================
-   FOURTH LIQUID LAYER
+   BROWN LIQUID
    ========================================================= */
 
-.header-brand::after {
-  box-shadow:
+.liquid-brown {
 
-    180px 8px 0 -15px
-      rgba(145, 77, 50, .08),
+  width: 390px;
+  height: 220px;
 
-    360px -18px 0 -22px
-      rgba(232, 223, 209, .08),
+  right: -85px;
+  top: -80px;
 
-    590px 15px 0 -25px
-      rgba(91, 93, 66, .10),
+  background:
+    rgba(64, 49, 39, .95);
 
-    790px -10px 0 -20px
-      rgba(145, 77, 50, .07);
+  border-radius:
+    38% 62% 29% 71%
+    /
+    59% 41% 64% 36%;
+
+  transform:
+    rotate(11deg);
+
+  animation:
+    liquidBrownFlow
+    32s
+    cubic-bezier(.37, .08, .63, .92)
+    infinite alternate-reverse;
 }
 
 
 /* =========================================================
-   LIQUID HIGHLIGHT
+   SUBTLE LIQUID INTERACTION
    ========================================================= */
 
 /*
-   Una linea di riflesso molto sottile.
-   Non è un glow.
+   Queste ombre interne servono a dare
+   una sensazione leggermente "materica"
+   senza usare blur.
 */
 
-.main-navigation::before {
-  content: "";
+.liquid-cream {
+  box-shadow:
+    inset -35px -20px 0 rgba(145, 77, 50, .025),
+    inset 25px 15px 0 rgba(255, 255, 255, .035);
+}
 
-  position: absolute;
+.liquid-rust {
+  box-shadow:
+    inset -30px 20px 0 rgba(109, 56, 38, .06),
+    inset 25px -15px 0 rgba(232, 223, 209, .025);
+}
 
-  pointer-events: none;
+.liquid-olive {
+  box-shadow:
+    inset 35px -20px 0 rgba(64, 49, 39, .06),
+    inset -25px 15px 0 rgba(232, 223, 209, .025);
+}
 
-  width: 38%;
-  height: 1px;
-
-  left: 8%;
-  top: 50%;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(232, 223, 209, .16),
-      transparent
-    );
-
-  opacity: .6;
-
-  animation:
-    liquidReflection
-    18s
-    ease-in-out
-    infinite alternate;
+.liquid-brown {
+  box-shadow:
+    inset -25px 20px 0 rgba(145, 77, 50, .05),
+    inset 30px -15px 0 rgba(232, 223, 209, .02);
 }
 
 
 /* =========================================================
-   LOGO HIGHLIGHT
+   CREAM ANIMATION
    ========================================================= */
 
-.header-brand::before {
-  content: "";
-
-  position: absolute;
-
-  width: 70px;
-  height: 40px;
-
-  left: -8px;
-  top: 50%;
-
-  transform: translateY(-50%);
-
-  border-radius: 50%;
-
-  background:
-    radial-gradient(
-      ellipse,
-      rgba(255, 255, 255, .08),
-      transparent 68%
-    );
-
-  opacity: .4;
-
-  pointer-events: none;
-}
-
-
-/* =========================================================
-   CONTENT ABOVE LIQUID
-   ========================================================= */
-
-.site-header > * {
-  position: relative;
-
-  z-index: 10;
-}
-
-
-/* =========================================================
-   CREAM LIQUID ANIMATION
-   ========================================================= */
-
-@keyframes liquidCream {
+@keyframes liquidCreamFlow {
 
   0% {
     transform:
-      translate3d(-3%, 1%, 0)
-      rotate(-3deg)
+      translate3d(-15px, 4px, 0)
+      rotate(-8deg)
       scale(1, 1);
 
     border-radius:
-      63% 37% 56% 44%
+      67% 33% 56% 44%
       /
-      42% 58% 47% 53%;
-  }
-
-  20% {
-    transform:
-      translate3d(2%, -4%, 0)
-      rotate(-1deg)
-      scale(1.05, .96);
-
-    border-radius:
-      52% 48% 61% 39%
-      /
-      54% 46% 42% 58%;
-  }
-
-  40% {
-    transform:
-      translate3d(7%, 1%, 0)
-      rotate(2deg)
-      scale(.96, 1.04);
-
-    border-radius:
-      42% 58% 44% 56%
-      /
-      61% 39% 58% 42%;
-  }
-
-  60% {
-    transform:
-      translate3d(4%, 5%, 0)
-      rotate(1deg)
-      scale(1.03, .97);
-
-    border-radius:
-      57% 43% 37% 63%
-      /
-      45% 55% 64% 36%;
-  }
-
-  80% {
-    transform:
-      translate3d(-4%, 3%, 0)
-      rotate(-2deg)
-      scale(.98, 1.03);
-
-    border-radius:
-      39% 61% 55% 45%
-      /
-      58% 42% 47% 53%;
-  }
-
-  100% {
-    transform:
-      translate3d(3%, -3%, 0)
-      rotate(2deg)
-      scale(1.04, .96);
-
-    border-radius:
-      60% 40% 43% 57%
-      /
-      48% 52% 61% 39%;
-  }
-}
-
-
-/* =========================================================
-   RUST LIQUID ANIMATION
-   ========================================================= */
-
-@keyframes liquidRust {
-
-  0% {
-    transform:
-      translate3d(4%, -3%, 0)
-      rotate(2deg)
-      scale(1.02, .98);
-
-    border-radius:
-      48% 52% 37% 63%
-      /
-      60% 38% 62% 40%;
-  }
-
-  20% {
-    transform:
-      translate3d(-2%, 2%, 0)
-      rotate(-1deg)
-      scale(.97, 1.04);
-
-    border-radius:
-      61% 39% 52% 48%
-      /
-      42% 58% 39% 61%;
-  }
-
-  40% {
-    transform:
-      translate3d(-7%, 4%, 0)
-      rotate(-3deg)
-      scale(1.05, .95);
-
-    border-radius:
-      43% 57% 64% 36%
-      /
-      55% 45% 53% 47%;
-  }
-
-  60% {
-    transform:
-      translate3d(-2%, -4%, 0)
-      rotate(2deg)
-      scale(.96, 1.05);
-
-    border-radius:
-      55% 45% 41% 59%
-      /
-      37% 63% 57% 43%;
-  }
-
-  80% {
-    transform:
-      translate3d(6%, -1%, 0)
-      rotate(1deg)
-      scale(1.04, .97);
-
-    border-radius:
-      38% 62% 57% 43%
-      /
-      62% 38% 44% 56%;
-  }
-
-  100% {
-    transform:
-      translate3d(-3%, 5%, 0)
-      rotate(-2deg)
-      scale(.98, 1.03);
-
-    border-radius:
-      59% 41% 46% 54%
-      /
-      48% 52% 61% 39%;
-  }
-}
-
-
-/* =========================================================
-   OLIVE LIQUID ANIMATION
-   ========================================================= */
-
-@keyframes liquidOlive {
-
-  0% {
-    transform:
-      translate3d(-2%, 0, 0)
-      rotate(-1deg)
-      scaleX(1);
+      45% 61% 39% 55%;
   }
 
   25% {
     transform:
-      translate3d(4%, -5px, 0)
-      rotate(1deg)
-      scaleX(1.05);
+      translate3d(20px, -8px, 0)
+      rotate(-3deg)
+      scale(1.08, .94);
+
+    border-radius:
+      51% 49% 67% 33%
+      /
+      58% 42% 36% 64%;
   }
 
   50% {
     transform:
-      translate3d(8%, 4px, 0)
-      rotate(-1.5deg)
-      scaleX(.96);
+      translate3d(48px, 5px, 0)
+      rotate(4deg)
+      scale(.94, 1.06);
+
+    border-radius:
+      38% 62% 47% 53%
+      /
+      67% 33% 57% 43%;
   }
 
   75% {
     transform:
-      translate3d(2%, 7px, 0)
+      translate3d(18px, 13px, 0)
       rotate(1deg)
-      scaleX(1.04);
+      scale(1.05, .96);
+
+    border-radius:
+      61% 39% 34% 66%
+      /
+      42% 58% 65% 35%;
   }
 
   100% {
     transform:
-      translate3d(-6%, -3px, 0)
-      rotate(-1deg)
-      scaleX(.98);
+      translate3d(-25px, -5px, 0)
+      rotate(-6deg)
+      scale(.97, 1.04);
+
+    border-radius:
+      44% 56% 61% 39%
+      /
+      53% 47% 39% 61%;
   }
 }
 
 
 /* =========================================================
-   REFLECTION ANIMATION
+   RUST ANIMATION
    ========================================================= */
 
-@keyframes liquidReflection {
+@keyframes liquidRustFlow {
 
   0% {
     transform:
-      translateX(-25%)
-      scaleX(.65);
+      translate3d(0, 0, 0)
+      rotate(7deg)
+      scale(1, 1);
 
-    opacity: .15;
+    border-radius:
+      72% 28% 61% 39%
+      /
+      48% 62% 38% 52%;
+  }
+
+  25% {
+    transform:
+      translate3d(-35px, 12px, 0)
+      rotate(1deg)
+      scale(.94, 1.08);
+
+    border-radius:
+      44% 56% 36% 64%
+      /
+      61% 39% 57% 43%;
   }
 
   50% {
-    opacity: .45;
+    transform:
+      translate3d(-70px, -8px, 0)
+      rotate(-6deg)
+      scale(1.08, .93);
+
+    border-radius:
+      63% 37% 49% 51%
+      /
+      38% 62% 65% 35%;
+  }
+
+  75% {
+    transform:
+      translate3d(-28px, -18px, 0)
+      rotate(-1deg)
+      scale(.96, 1.05);
+
+    border-radius:
+      35% 65% 63% 37%
+      /
+      55% 45% 41% 59%;
   }
 
   100% {
     transform:
-      translateX(25%)
-      scaleX(1);
+      translate3d(25px, 8px, 0)
+      rotate(8deg)
+      scale(1.05, .97);
 
-    opacity: .18;
+    border-radius:
+      58% 42% 39% 61%
+      /
+      47% 53% 62% 38%;
   }
+}
+
+
+/* =========================================================
+   OLIVE ANIMATION
+   ========================================================= */
+
+@keyframes liquidOliveFlow {
+
+  0% {
+    transform:
+      translate3d(0, 0, 0)
+      rotate(-6deg)
+      scale(1, 1);
+
+    border-radius:
+      31% 69% 43% 57%
+      /
+      62% 38% 67% 33%;
+  }
+
+  25% {
+    transform:
+      translate3d(-25px, -12px, 0)
+      rotate(-1deg)
+      scale(1.07, .94);
+
+    border-radius:
+      56% 44% 67% 33%
+      /
+      39% 61% 43% 57%;
+  }
+
+  50% {
+    transform:
+      translate3d(-55px, 8px, 0)
+      rotate(5deg)
+      scale(.94, 1.07);
+
+    border-radius:
+      38% 62% 34% 66%
+      /
+      57% 43% 68% 32%;
+  }
+
+  75% {
+    transform:
+      translate3d(-18px, 16px, 0)
+      rotate(1deg)
+      scale(1.04, .96);
+
+    border-radius:
+      66% 34% 51% 49%
+      /
+      46% 54% 35% 65%;
+  }
+
+  100% {
+    transform:
+      translate3d(30px, -6px, 0)
+      rotate(-7deg)
+      scale(.98, 1.03);
+
+    border-radius:
+      43% 57% 61% 39%
+      /
+      63% 37% 52% 48%;
+  }
+}
+
+
+/* =========================================================
+   BROWN ANIMATION
+   ========================================================= */
+
+@keyframes liquidBrownFlow {
+
+  0% {
+    transform:
+      translate3d(0, 0, 0)
+      rotate(11deg)
+      scale(1, 1);
+
+    border-radius:
+      38% 62% 29% 71%
+      /
+      59% 41% 64% 36%;
+  }
+
+  25% {
+    transform:
+      translate3d(-18px, 15px, 0)
+      rotate(4deg)
+      scale(.94, 1.08);
+
+    border-radius:
+      61% 39% 55% 45%
+      /
+      36% 64% 48% 52%;
+  }
+
+  50% {
+    transform:
+      translate3d(10px, 26px, 0)
+      rotate(-5deg)
+      scale(1.07, .94);
+
+    border-radius:
+      43% 57% 67% 33%
+      /
+      62% 38% 39% 61%;
+  }
+
+  75% {
+    transform:
+      translate3d(25px, 4px, 0)
+      rotate(3deg)
+      scale(.97, 1.04);
+
+    border-radius:
+      67% 33% 41% 59%
+      /
+      44% 56% 63% 37%;
+  }
+
+  100% {
+    transform:
+      translate3d(-8px, -15px, 0)
+      rotate(10deg)
+      scale(1.04, .97);
+
+    border-radius:
+      49% 51% 58% 42%
+      /
+      65% 35% 46% 54%;
+  }
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.header-brand {
+  width: 80px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  flex-shrink: 0;
+
+  position: relative;
+
+  z-index: 20;
+}
+
+.logo {
+  display: block;
+
+  width: 80px;
+
+  flex-shrink: 0;
+}
+
+.logo img {
+  display: block;
+
+  width: 100%;
+  height: auto;
 }
 
 
@@ -614,6 +606,7 @@ img {
   margin-right: 30px;
 
   position: relative;
+
   z-index: 20;
 }
 
@@ -732,22 +725,6 @@ img {
 
 
 /* =========================================================
-   DESKTOP
-   ========================================================= */
-
-@media (min-width: 851px) {
-
-  .site-header::before {
-    opacity: .95;
-  }
-
-  .site-header::after {
-    opacity: .80;
-  }
-}
-
-
-/* =========================================================
    TABLET / MOBILE
    ========================================================= */
 
@@ -763,38 +740,40 @@ img {
       rgba(18, 17, 15, .86);
   }
 
-  .site-header::before {
-    width: 125%;
-    height: 210%;
-
-    left: -30%;
-    top: -55%;
-
-    opacity: .85;
-
-    animation-duration: 30s;
+  .liquid {
+    opacity: .25;
   }
 
-  .site-header::after {
-    width: 135%;
-    height: 210%;
+  .liquid-cream {
+    width: 300px;
+    height: 180px;
+
+    left: -100px;
+    top: -75px;
+  }
+
+  .liquid-rust {
+    width: 330px;
+    height: 170px;
 
     left: 5%;
-    top: -52%;
-
-    opacity: .72;
-
-    animation-duration: 38s;
+    top: -60px;
   }
 
-  .header-brand::after {
-    width: 140vw;
+  .liquid-olive {
+    width: 360px;
+    height: 150px;
 
-    left: 0;
+    right: -100px;
+    bottom: -70px;
+  }
 
-    opacity: .7;
+  .liquid-brown {
+    width: 290px;
+    height: 170px;
 
-    animation-duration: 42s;
+    right: -90px;
+    top: -65px;
   }
 
 
@@ -1021,38 +1000,40 @@ img {
     width: 190px;
   }
 
-  .site-header::before {
-    width: 145%;
-    height: 230%;
-
-    left: -42%;
-    top: -65%;
-
-    opacity: .75;
-
-    animation-duration: 34s;
+  .liquid {
+    opacity: .22;
   }
 
-  .site-header::after {
-    width: 150%;
-    height: 230%;
+  .liquid-cream {
+    width: 250px;
+    height: 155px;
+
+    left: -100px;
+    top: -60px;
+  }
+
+  .liquid-rust {
+    width: 270px;
+    height: 145px;
 
     left: 0;
-    top: -62%;
-
-    opacity: .62;
-
-    animation-duration: 43s;
+    top: -55px;
   }
 
-  .header-brand::after {
-    width: 165vw;
+  .liquid-olive {
+    width: 290px;
+    height: 130px;
 
-    left: -5%;
+    right: -90px;
+    bottom: -65px;
+  }
 
-    opacity: .55;
+  .liquid-brown {
+    width: 240px;
+    height: 145px;
 
-    animation-duration: 48s;
+    right: -80px;
+    top: -55px;
   }
 
   .hero-meta,
@@ -1564,10 +1545,7 @@ img {
 
 @media (prefers-reduced-motion: reduce) {
 
-  .site-header::before,
-  .site-header::after,
-  .header-brand::after,
-  .main-navigation::before {
+  .liquid {
     animation: none !important;
   }
 
