@@ -965,3 +965,82 @@ img {
     padding:18px;
   }
 }
+
+/* =========================
+   GLASS BUBBLES — HEADER ONLY
+   ========================= */
+
+.site-header {
+  overflow:hidden;
+  isolation:isolate;
+}
+
+.site-header::before,
+.site-header::after {
+  content:"";
+  position:absolute;
+  inset:-45px -8%;
+  pointer-events:none;
+  z-index:0;
+  opacity:.5;
+  will-change:transform, background-position;
+}
+
+.site-header::before {
+  background:
+    radial-gradient(circle at 8% 52%, rgba(255,255,255,.18) 0 5px, rgba(255,255,255,.08) 6px, transparent 8px),
+    radial-gradient(circle at 23% 20%, rgba(255,255,255,.14) 0 11px, rgba(255,255,255,.055) 12px, transparent 15px),
+    radial-gradient(circle at 42% 74%, rgba(255,255,255,.16) 0 7px, rgba(255,255,255,.06) 8px, transparent 10px),
+    radial-gradient(circle at 59% 31%, rgba(255,255,255,.15) 0 15px, rgba(255,255,255,.05) 16px, transparent 19px),
+    radial-gradient(circle at 76% 68%, rgba(255,255,255,.17) 0 9px, rgba(255,255,255,.06) 10px, transparent 13px),
+    radial-gradient(circle at 92% 38%, rgba(255,255,255,.13) 0 6px, rgba(255,255,255,.05) 7px, transparent 9px);
+  background-size:100% 100%;
+  filter:blur(.35px);
+  animation:glassBubblesDrift 18s ease-in-out infinite alternate;
+}
+
+.site-header::after {
+  background:
+    radial-gradient(circle at 14% 82%, transparent 0 10px, rgba(255,255,255,.08) 11px, transparent 13px),
+    radial-gradient(circle at 34% 43%, transparent 0 18px, rgba(255,255,255,.07) 19px, transparent 21px),
+    radial-gradient(circle at 67% 82%, transparent 0 12px, rgba(255,255,255,.09) 13px, transparent 15px),
+    radial-gradient(circle at 84% 17%, transparent 0 20px, rgba(255,255,255,.065) 21px, transparent 23px);
+  filter:blur(.7px);
+  animation:glassBubblesFloat 24s ease-in-out infinite alternate-reverse;
+}
+
+.site-header > * {
+  position:relative;
+  z-index:2;
+}
+
+@keyframes glassBubblesDrift {
+  0% {
+    transform:translate3d(-1.5%, 2px, 0) scale(1);
+  }
+  50% {
+    transform:translate3d(1%, -4px, 0) scale(1.025);
+  }
+  100% {
+    transform:translate3d(-.5%, 3px, 0) scale(1.01);
+  }
+}
+
+@keyframes glassBubblesFloat {
+  0% {
+    transform:translate3d(1%, -3px, 0) scale(1.01);
+  }
+  50% {
+    transform:translate3d(-1.5%, 4px, 0) scale(1.035);
+  }
+  100% {
+    transform:translate3d(.5%, -2px, 0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .site-header::before,
+  .site-header::after {
+    animation:none;
+  }
+}
