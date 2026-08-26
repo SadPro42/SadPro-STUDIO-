@@ -66,15 +66,11 @@ img {
 
   padding:0 32px;
 
-  background:rgba(18,17,15,.88);
+  background:rgba(18,17,15,.94);
 
   border-bottom:1px solid var(--line);
 
-  backdrop-filter:blur(14px) saturate(120%);
-  -webkit-backdrop-filter:blur(14px) saturate(120%);
-
-  overflow:hidden;
-  isolation:isolate;
+  backdrop-filter:blur(12px);
 }
 
 
@@ -101,7 +97,6 @@ img {
   width:100%;
   height:auto;
 }
-
 
 /* =========================
    DESKTOP NAVIGATION
@@ -226,7 +221,6 @@ img {
   font-size:26px;
 
   backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
 
   box-shadow:
     0 8px 25px rgba(0,0,0,.25);
@@ -744,7 +738,7 @@ img {
     justify-content:flex-start;
   }
 
-  /* MENU */
+/* MENU */
 
   .main-navigation {
     display:none;
@@ -776,7 +770,6 @@ img {
       0 12px 35px rgba(0,0,0,.4);
 
     backdrop-filter:blur(15px);
-    -webkit-backdrop-filter:blur(15px);
   }
 
   .main-navigation.is-open {
@@ -935,8 +928,7 @@ img {
   .header-brand {
     width:80px;
   }
-
-  .menu-toggle {
+.menu-toggle {
     width:64px;
     height:64px;
 
@@ -948,6 +940,7 @@ img {
     font-size:24px;
   }
 
+
   .main-navigation {
     top:112px;
 
@@ -955,6 +948,7 @@ img {
 
     width:190px;
   }
+
 
   .hero-meta,
   .page-meta {
@@ -972,350 +966,337 @@ img {
   }
 }
 
-
 /* =========================================================
-   REALISTIC LIQUID GLASS BUBBLES — HEADER ONLY
-   ========================================================= */
+   EDITORIAL LIQUID BLOBS — HEADER ONLY
+   =========================================================
+
+   Abstract, slow-moving organic forms inspired by luxury
+   editorial / art-direction references. The effect stays
+   intentionally subtle: no neon, no hard outlines, no
+   obvious "lava lamp" look.
+*/
 
 .site-header {
   position:sticky;
-
   overflow:hidden;
-
   isolation:isolate;
 
-  background:rgba(18,17,15,.88);
+  /* Deep editorial surface */
+  background:
+    linear-gradient(
+      115deg,
+      rgba(18,17,15,.96),
+      rgba(25,21,18,.92) 48%,
+      rgba(18,17,15,.96)
+    );
 
   backdrop-filter:
-    blur(14px)
-    saturate(120%);
+    blur(18px)
+    saturate(108%);
 
   -webkit-backdrop-filter:
-    blur(14px)
-    saturate(120%);
+    blur(18px)
+    saturate(108%);
 }
 
 
-/* =========================
-   ATMOSPHERIC GLASS LAYER
-   ========================= */
+/* =========================================================
+   ORGANIC ATMOSPHERE
+   ========================================================= */
 
 .site-header::before {
   content:"";
 
   position:absolute;
 
-  inset:-70px -12%;
+  width:72%;
+  height:175%;
+
+  left:-18%;
+  top:-38%;
 
   z-index:0;
-
   pointer-events:none;
 
-  opacity:.5;
+  border-radius:
+    58% 42% 47% 53% /
+    42% 58% 43% 57%;
 
   background:
-
-    /* BUBBLE 1 */
-
     radial-gradient(
-      circle at 7% 42%,
-      rgba(255,255,255,.46) 0 2%,
-      rgba(255,255,255,.20) 2.2% 2.7%,
-      rgba(255,255,255,.055) 3.2% 4.8%,
-      transparent 5.2%
+      ellipse at 36% 28%,
+      rgba(232,223,209,.20) 0%,
+      rgba(232,223,209,.105) 18%,
+      rgba(232,223,209,.035) 42%,
+      transparent 68%
     ),
-
-    /* BUBBLE 2 */
-
     radial-gradient(
-      circle at 21% 78%,
-      rgba(255,255,255,.38) 0 1.2%,
-      rgba(255,255,255,.16) 1.5% 2%,
-      rgba(255,255,255,.045) 2.4% 4.2%,
-      transparent 4.6%
+      ellipse at 68% 72%,
+      rgba(145,77,50,.16) 0%,
+      rgba(145,77,50,.065) 28%,
+      transparent 66%
     ),
-
-    /* BUBBLE 3 */
-
-    radial-gradient(
-      circle at 39% 24%,
-      rgba(255,255,255,.48) 0 2.5%,
-      rgba(255,255,255,.17) 2.8% 3.3%,
-      rgba(255,255,255,.045) 3.8% 6.3%,
-      transparent 6.8%
-    ),
-
-    /* BUBBLE 4 */
-
-    radial-gradient(
-      circle at 57% 71%,
-      rgba(255,255,255,.40) 0 1.7%,
-      rgba(255,255,255,.15) 2% 2.6%,
-      rgba(255,255,255,.045) 3% 5.1%,
-      transparent 5.6%
-    ),
-
-    /* BUBBLE 5 */
-
-    radial-gradient(
-      circle at 74% 31%,
-      rgba(255,255,255,.50) 0 2.1%,
-      rgba(255,255,255,.18) 2.4% 3%,
-      rgba(255,255,255,.05) 3.5% 5.8%,
-      transparent 6.3%
-    ),
-
-    /* BUBBLE 6 */
-
-    radial-gradient(
-      circle at 91% 76%,
-      rgba(255,255,255,.42) 0 1.3%,
-      rgba(255,255,255,.15) 1.6% 2.2%,
-      rgba(255,255,255,.04) 2.7% 4.3%,
-      transparent 4.8%
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.045),
+      rgba(255,255,255,0) 60%
     );
 
   filter:
-    blur(.25px)
-    contrast(108%)
-    saturate(115%);
+    blur(24px)
+    saturate(82%);
 
-  transform:translate3d(0,0,0);
+  opacity:.50;
+
+  transform:
+    translate3d(0,0,0)
+    rotate(-7deg)
+    scale(1.04);
+
+  transform-origin:50% 50%;
 
   will-change:transform;
 
   animation:
-    glassAtmosphere
-    20s
-    ease-in-out
-    infinite
-    alternate;
+    editorialBlobA
+    26s
+    cubic-bezier(.45,.05,.55,.95)
+    infinite alternate;
 }
 
 
-/* =========================
-   SECONDARY GLASS REFLECTION
-   ========================= */
+/* =========================================================
+   SECOND ORGANIC MASS + SOFT LIGHT
+   ========================================================= */
 
 .site-header::after {
   content:"";
 
   position:absolute;
 
-  inset:-80px -10%;
+  width:76%;
+  height:190%;
+
+  right:-22%;
+  top:-45%;
 
   z-index:1;
-
   pointer-events:none;
 
-  opacity:.5;
+  border-radius:
+    43% 57% 61% 39% /
+    56% 44% 58% 42%;
 
   background:
-
-    /* LARGE GLASS SPHERE */
-
     radial-gradient(
-      circle at 14% 22%,
-      rgba(255,255,255,.12) 0 7%,
-      rgba(255,255,255,.035) 7.4% 8%,
-      transparent 8.5%
+      ellipse at 28% 34%,
+      rgba(232,223,209,.145) 0%,
+      rgba(232,223,209,.065) 24%,
+      transparent 61%
     ),
-
     radial-gradient(
-      circle at 47% 84%,
-      rgba(255,255,255,.09) 0 5.5%,
-      rgba(255,255,255,.025) 5.8% 6.5%,
-      transparent 7%
+      ellipse at 72% 62%,
+      rgba(109,56,38,.22) 0%,
+      rgba(109,56,38,.085) 24%,
+      transparent 62%
     ),
-
     radial-gradient(
-      circle at 84% 62%,
-      rgba(255,255,255,.10) 0 6.5%,
-      rgba(255,255,255,.03) 6.8% 7.5%,
-      transparent 8%
-    ),
-
-    /* SPECULAR HIGHLIGHT 1 */
-
-    radial-gradient(
-      ellipse at 13% 18%,
-      rgba(255,255,255,.75) 0 1.2%,
-      transparent 2%
-    ),
-
-    /* SPECULAR HIGHLIGHT 2 */
-
-    radial-gradient(
-      ellipse at 73% 27%,
-      rgba(255,255,255,.65) 0 1%,
-      transparent 1.8%
+      ellipse at 54% 80%,
+      rgba(91,93,66,.07) 0%,
+      transparent 52%
     );
 
   filter:
-    blur(.6px)
-    saturate(125%);
+    blur(30px)
+    saturate(78%);
 
-  mix-blend-mode:screen;
+  opacity:.43;
+
+  transform:
+    translate3d(0,0,0)
+    rotate(8deg)
+    scale(1.06);
+
+  transform-origin:50% 50%;
+
+  will-change:transform;
 
   animation:
-    glassReflection
-    27s
-    ease-in-out
-    infinite
-    alternate-reverse;
+    editorialBlobB
+    34s
+    cubic-bezier(.45,.05,.55,.95)
+    infinite alternate-reverse;
 }
 
 
-/* =========================
-   HEADER CONTENT ABOVE GLASS
-   ========================= */
-
-.site-header > * {
-  position:relative;
-
-  z-index:3;
-}
-
-
-/* =========================
-   SUBTLE DEPTH ON CONTENT
-   ========================= */
+/* =========================================================
+   VERY SUBTLE GLASS VEIL
+   ========================================================= */
 
 .site-header .header-brand,
 .site-header .main-navigation,
 .site-header .menu-toggle {
   filter:
-    drop-shadow(
-      0 1px 1px rgba(0,0,0,.16)
-    );
+    drop-shadow(0 1px 2px rgba(0,0,0,.18));
 }
 
 
-/* =========================
-   GLASS ATMOSPHERE ANIMATION
-   ========================= */
+/*
+   A hairline light over the top edge keeps the effect
+   feeling like light passing through a material rather
+   than colored shapes sitting behind the menu.
+*/
+.site-header {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.035);
+}
 
-@keyframes glassAtmosphere {
+
+/* =========================================================
+   SLOW ORGANIC MOVEMENT
+   ========================================================= */
+
+@keyframes editorialBlobA {
 
   0% {
     transform:
-      translate3d(-1.5%,2px,0)
-      scale(1);
+      translate3d(-3%, 2%, 0)
+      rotate(-8deg)
+      scale(1.03,1.07);
+  }
+
+  22% {
+    transform:
+      translate3d(2%, -1%, 0)
+      rotate(-2deg)
+      scale(1.09,.98);
+  }
+
+  48% {
+    transform:
+      translate3d(7%, 3%, 0)
+      rotate(5deg)
+      scale(.98,1.08);
+  }
+
+  72% {
+    transform:
+      translate3d(1%, -4%, 0)
+      rotate(1deg)
+      scale(1.07,1.02);
+  }
+
+  100% {
+    transform:
+      translate3d(-4%, 1%, 0)
+      rotate(-6deg)
+      scale(1.02,1.09);
+  }
+}
+
+
+@keyframes editorialBlobB {
+
+  0% {
+    transform:
+      translate3d(4%, -2%, 0)
+      rotate(9deg)
+      scale(1.07,.98);
   }
 
   25% {
     transform:
-      translate3d(.5%,-4px,0)
-      scale(1.012);
+      translate3d(-3%, 3%, 0)
+      rotate(2deg)
+      scale(.99,1.08);
   }
 
   50% {
     transform:
-      translate3d(1.8%,2px,0)
-      scale(1.025);
+      translate3d(-7%, -1%, 0)
+      rotate(-6deg)
+      scale(1.08,1.02);
   }
 
-  75% {
+  76% {
     transform:
-      translate3d(-.5%,-3px,0)
-      scale(1.012);
+      translate3d(-1%, 4%, 0)
+      rotate(-1deg)
+      scale(1.01,1.09);
   }
 
   100% {
     transform:
-      translate3d(-1%,3px,0)
-      scale(1.02);
+      translate3d(5%, -2%, 0)
+      rotate(7deg)
+      scale(1.06,.99);
   }
 }
 
 
-/* =========================
-   GLASS REFLECTION ANIMATION
-   ========================= */
-
-@keyframes glassReflection {
-
-  0% {
-    transform:
-      translate3d(1%,-3px,0)
-      rotate(-.4deg)
-      scale(1);
-  }
-
-  30% {
-    transform:
-      translate3d(-1.5%,3px,0)
-      rotate(.3deg)
-      scale(1.025);
-  }
-
-  65% {
-    transform:
-      translate3d(1.2%,-1px,0)
-      rotate(-.2deg)
-      scale(1.04);
-  }
-
-  100% {
-    transform:
-      translate3d(-.8%,2px,0)
-      rotate(.4deg)
-      scale(1.015);
-  }
-}
-
-
-/* =========================
-   MOBILE GLASS
-   ========================= */
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media(max-width:850px) {
 
   .site-header {
-    background:rgba(18,17,15,.84);
+    background:
+      linear-gradient(
+        115deg,
+        rgba(18,17,15,.965),
+        rgba(25,21,18,.94) 48%,
+        rgba(18,17,15,.965)
+      );
 
     backdrop-filter:
-      blur(15px)
-      saturate(120%);
+      blur(20px)
+      saturate(105%);
 
     -webkit-backdrop-filter:
-      blur(15px)
-      saturate(120%);
+      blur(20px)
+      saturate(105%);
   }
 
   .site-header::before {
-    inset:-60px -25%;
-
-    opacity:.42;
+    width:110%;
+    height:190%;
+    left:-38%;
+    top:-45%;
+    opacity:.40;
+    filter:blur(27px) saturate(78%);
   }
 
   .site-header::after {
-    inset:-70px -20%;
-
-    opacity:.38;
+    width:105%;
+    height:195%;
+    right:-36%;
+    top:-48%;
+    opacity:.34;
+    filter:blur(31px) saturate(75%);
   }
 }
 
 
-/* =========================
-   SMALL MOBILE GLASS
-   ========================= */
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
 
 @media(max-width:450px) {
 
   .site-header::before {
-    opacity:.38;
+    opacity:.34;
   }
 
   .site-header::after {
-    opacity:.34;
+    opacity:.29;
   }
 }
 
 
-/* =========================
-   REDUCED MOTION
-   ========================= */
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
 
 @media(prefers-reduced-motion:reduce) {
 
