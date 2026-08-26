@@ -80,12 +80,6 @@ img {
 
   padding: 0 32px;
 
-  /*
-   * Dark glass layer.
-   * Kept relatively opaque so the liquid light
-   * remains subtle and editorial.
-   */
-
   background:
     linear-gradient(
       110deg,
@@ -285,9 +279,8 @@ img {
 /* =========================================================
    EDITORIAL LIQUID LIGHT
    ---------------------------------------------------------
-   Soft
-   Defined
-   Slow
+   Soft / Defined / Slow
+   Reduced blur
    Approx. 30% visual intensity
    ========================================================= */
 
@@ -357,7 +350,7 @@ img {
     ),
 
     /* =====================================================
-       VERY SOFT CENTRAL LIGHT
+       SOFT CENTRAL LIGHT
        ===================================================== */
 
     radial-gradient(
@@ -367,8 +360,14 @@ img {
       transparent 72%
     );
 
+  /*
+   * Reduced from 7px.
+   * The gradients remain soft but their shapes
+   * are now more visible.
+   */
+
   filter:
-    blur(7px)
+    blur(4px)
     saturate(115%);
 
   opacity: .95;
@@ -450,8 +449,13 @@ img {
       transparent 68%
     );
 
+  /*
+   * Very low blur on the secondary layer.
+   * This creates definition and depth.
+   */
+
   filter:
-    blur(9px)
+    blur(5px)
     saturate(120%);
 
   opacity: .75;
@@ -492,7 +496,7 @@ img {
       transparent 70%
     );
 
-  filter: blur(10px);
+  filter: blur(7px);
 
   opacity: .40;
 
@@ -513,9 +517,6 @@ img {
 
 /* =========================================================
    LIQUID MOVEMENT A
-   ---------------------------------------------------------
-   Large, slow organic movement.
-   No abrupt direction changes.
    ========================================================= */
 
 @keyframes editorialLiquidA {
@@ -559,9 +560,6 @@ img {
 
 /* =========================================================
    LIQUID MOVEMENT B
-   ---------------------------------------------------------
-   Secondary movement.
-   Slower than layer A to create depth.
    ========================================================= */
 
 @keyframes editorialLiquidB {
@@ -649,9 +647,9 @@ img {
   }
 
 
-  /* -------------------------------------------------------
+  /* =======================================================
      MOBILE LIQUID
-     ------------------------------------------------------- */
+     ======================================================= */
 
   .site-header::before {
     width: 180%;
@@ -661,7 +659,7 @@ img {
     top: -115%;
 
     filter:
-      blur(6px)
+      blur(3px)
       saturate(115%);
 
     opacity: .90;
@@ -677,7 +675,7 @@ img {
     top: -120%;
 
     filter:
-      blur(8px)
+      blur(4px)
       saturate(120%);
 
     opacity: .70;
@@ -920,9 +918,9 @@ img {
   }
 
 
-  /* -------------------------------------------------------
+  /* =======================================================
      SMALL MOBILE LIQUID
-     ------------------------------------------------------- */
+     ======================================================= */
 
   .site-header::before {
     width: 220%;
@@ -934,7 +932,7 @@ img {
     opacity: .85;
 
     filter:
-      blur(5px)
+      blur(2px)
       saturate(115%);
 
     animation-duration: 46s;
@@ -950,7 +948,7 @@ img {
     opacity: .65;
 
     filter:
-      blur(8px)
+      blur(3px)
       saturate(120%);
 
     animation-duration: 62s;
