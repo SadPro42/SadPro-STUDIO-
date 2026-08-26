@@ -66,12 +66,33 @@ img {
 
   padding: 0 32px;
 
-  background: rgba(18, 17, 15, .91);
+  /*
+   * Slightly more transparent than before.
+   * This allows the liquid layers to breathe through.
+   */
+  background:
+    linear-gradient(
+      110deg,
+      rgba(18, 17, 15, .88),
+      rgba(18, 17, 15, .76),
+      rgba(18, 17, 15, .86)
+    );
 
   border-bottom: 1px solid var(--line);
 
   overflow: hidden;
   isolation: isolate;
+
+  backdrop-filter:
+    blur(8px)
+    saturate(120%);
+
+  -webkit-backdrop-filter:
+    blur(8px)
+    saturate(120%);
+
+  box-shadow:
+    inset 0 -1px 0 rgba(255, 255, 255, .025);
 }
 
 
@@ -211,7 +232,7 @@ img {
 
   border: 1px solid var(--line);
 
-  background: rgba(18, 17, 15, .94);
+  background: rgba(18, 17, 15, .90);
 
   color: var(--cream);
 
@@ -242,14 +263,12 @@ img {
    ========================================================= */
 
 /*
-   The effect is intentionally restrained:
-   large organic masses,
-   warm neutral colors,
-   slow movement,
-   soft edges.
-
-   The goal is for it to feel like moving light/material,
-   rather than obvious animated blobs.
+   Enhanced version:
+   - stronger color masses
+   - less blur
+   - higher saturation
+   - wider movement
+   - more noticeable organic transitions
 */
 
 
@@ -268,63 +287,75 @@ img {
   left: -22%;
   top: -82%;
 
-  /*
-   * Main organic masses
-   */
   background:
 
-    /* LARGE CREAM MASS */
+    /* =====================================================
+       LARGE CREAM MASS
+       ===================================================== */
+
     radial-gradient(
       ellipse 31% 58% at 13% 48%,
-      rgba(232, 223, 209, .34) 0%,
-      rgba(232, 223, 209, .20) 18%,
-      rgba(232, 223, 209, .10) 36%,
-      rgba(232, 223, 209, .035) 54%,
+      rgba(232, 223, 209, .48) 0%,
+      rgba(232, 223, 209, .29) 18%,
+      rgba(232, 223, 209, .14) 36%,
+      rgba(232, 223, 209, .045) 54%,
       transparent 72%
     ),
 
-    /* RUST MASS */
+    /* =====================================================
+       RUST MASS
+       ===================================================== */
+
     radial-gradient(
       ellipse 34% 48% at 43% 38%,
-      rgba(145, 77, 50, .34) 0%,
-      rgba(145, 77, 50, .22) 20%,
-      rgba(145, 77, 50, .12) 39%,
-      rgba(145, 77, 50, .035) 58%,
+      rgba(145, 77, 50, .46) 0%,
+      rgba(145, 77, 50, .30) 20%,
+      rgba(145, 77, 50, .16) 39%,
+      rgba(145, 77, 50, .045) 58%,
       transparent 74%
     ),
 
-    /* OLIVE MASS */
+    /* =====================================================
+       OLIVE MASS
+       ===================================================== */
+
     radial-gradient(
       ellipse 27% 60% at 72% 65%,
-      rgba(91, 93, 66, .28) 0%,
-      rgba(91, 93, 66, .18) 22%,
-      rgba(91, 93, 66, .08) 42%,
-      rgba(91, 93, 66, .025) 60%,
+      rgba(91, 93, 66, .38) 0%,
+      rgba(91, 93, 66, .24) 22%,
+      rgba(91, 93, 66, .11) 42%,
+      rgba(91, 93, 66, .03) 60%,
       transparent 75%
     ),
 
-    /* BROWN MASS */
+    /* =====================================================
+       BROWN MASS
+       ===================================================== */
+
     radial-gradient(
       ellipse 35% 42% at 93% 27%,
-      rgba(64, 49, 39, .65) 0%,
-      rgba(64, 49, 39, .45) 20%,
-      rgba(64, 49, 39, .20) 44%,
+      rgba(64, 49, 39, .72) 0%,
+      rgba(64, 49, 39, .50) 20%,
+      rgba(64, 49, 39, .23) 44%,
       transparent 70%
     ),
 
-    /* SOFT CENTRAL LIGHT */
+    /* =====================================================
+       SOFT CENTRAL LIGHT
+       ===================================================== */
+
     radial-gradient(
       ellipse 26% 50% at 54% 58%,
-      rgba(232, 223, 209, .12) 0%,
-      rgba(232, 223, 209, .045) 38%,
+      rgba(232, 223, 209, .17) 0%,
+      rgba(232, 223, 209, .06) 38%,
       transparent 72%
     );
 
   filter:
-    blur(19px)
-    saturate(108%);
+    blur(13px)
+    saturate(125%);
 
-  opacity: .88;
+  opacity: 1;
 
   transform-origin: 50% 50%;
 
@@ -359,43 +390,55 @@ img {
 
   background:
 
-    /* LIGHT RIBBON */
+    /* =====================================================
+       LIGHT RIBBON
+       ===================================================== */
+
     radial-gradient(
       ellipse 22% 45% at 25% 70%,
-      rgba(255, 248, 237, .20) 0%,
-      rgba(255, 248, 237, .08) 28%,
+      rgba(255, 248, 237, .28) 0%,
+      rgba(255, 248, 237, .12) 28%,
       transparent 67%
     ),
 
-    /* DARK RUST DEPTH */
+    /* =====================================================
+       DARK RUST DEPTH
+       ===================================================== */
+
     radial-gradient(
       ellipse 30% 40% at 62% 27%,
-      rgba(109, 56, 38, .38) 0%,
-      rgba(109, 56, 38, .20) 28%,
+      rgba(109, 56, 38, .48) 0%,
+      rgba(109, 56, 38, .26) 28%,
       transparent 72%
     ),
 
-    /* WARM BEIGE */
+    /* =====================================================
+       WARM BEIGE
+       ===================================================== */
+
     radial-gradient(
       ellipse 28% 55% at 82% 76%,
-      rgba(207, 195, 177, .18) 0%,
-      rgba(207, 195, 177, .08) 30%,
+      rgba(207, 195, 177, .23) 0%,
+      rgba(207, 195, 177, .10) 30%,
       transparent 70%
     ),
 
-    /* SMALLER ORGANIC ACCENT */
+    /* =====================================================
+       SMALL ORGANIC ACCENT
+       ===================================================== */
+
     radial-gradient(
       ellipse 18% 30% at 48% 82%,
-      rgba(145, 77, 50, .25) 0%,
-      rgba(145, 77, 50, .10) 32%,
+      rgba(145, 77, 50, .34) 0%,
+      rgba(145, 77, 50, .14) 32%,
       transparent 70%
     );
 
   filter:
-    blur(25px)
-    saturate(115%);
+    blur(17px)
+    saturate(135%);
 
-  opacity: .82;
+  opacity: .95;
 
   mix-blend-mode: screen;
 
@@ -406,29 +449,6 @@ img {
     infinite alternate-reverse;
 
   will-change: transform;
-}
-
-
-/* =========================================================
-   SUBTLE GLASS VEIL
-   ========================================================= */
-
-.site-header {
-  background:
-    linear-gradient(
-      110deg,
-      rgba(18, 17, 15, .93),
-      rgba(18, 17, 15, .82),
-      rgba(18, 17, 15, .91)
-    );
-
-  backdrop-filter:
-    blur(9px)
-    saturate(115%);
-
-  -webkit-backdrop-filter:
-    blur(9px)
-    saturate(115%);
 }
 
 
@@ -452,13 +472,13 @@ img {
   background:
     radial-gradient(
       ellipse,
-      rgba(255, 255, 255, .12),
+      rgba(255, 255, 255, .15),
       transparent 70%
     );
 
   filter: blur(10px);
 
-  opacity: .35;
+  opacity: .45;
 
   pointer-events: none;
 }
@@ -476,16 +496,6 @@ img {
 
 
 /* =========================================================
-   VERY SUBTLE LIGHT EDGE
-   ========================================================= */
-
-.site-header {
-  box-shadow:
-    inset 0 -1px 0 rgba(255, 255, 255, .025);
-}
-
-
-/* =========================================================
    LIQUID MOVEMENT A
    ========================================================= */
 
@@ -493,44 +503,44 @@ img {
 
   0% {
     transform:
-      translate3d(-4%, 2%, 0)
-      rotate(-1deg)
+      translate3d(-8%, 4%, 0)
+      rotate(-2deg)
       scale(1);
   }
 
   20% {
     transform:
-      translate3d(1%, -3%, 0)
-      rotate(1deg)
-      scale(1.035, .98);
+      translate3d(3%, -6%, 0)
+      rotate(2deg)
+      scale(1.05, .97);
   }
 
   42% {
     transform:
-      translate3d(5%, 2%, 0)
-      rotate(-1.5deg)
-      scale(.97, 1.025);
+      translate3d(9%, 4%, 0)
+      rotate(-2.5deg)
+      scale(.96, 1.04);
   }
 
   64% {
     transform:
-      translate3d(-1%, 5%, 0)
-      rotate(1deg)
-      scale(1.025, .97);
+      translate3d(-3%, 8%, 0)
+      rotate(2deg)
+      scale(1.04, .96);
   }
 
   82% {
     transform:
-      translate3d(-5%, -1%, 0)
-      rotate(-.5deg)
-      scale(.985, 1.02);
+      translate3d(-9%, -2%, 0)
+      rotate(-1deg)
+      scale(.97, 1.04);
   }
 
   100% {
     transform:
-      translate3d(2%, -4%, 0)
-      rotate(1.2deg)
-      scale(1.035, .985);
+      translate3d(5%, -7%, 0)
+      rotate(2deg)
+      scale(1.05, .97);
   }
 }
 
@@ -543,44 +553,44 @@ img {
 
   0% {
     transform:
-      translate3d(5%, -3%, 0)
-      rotate(1deg)
-      scale(1.02);
+      translate3d(9%, -5%, 0)
+      rotate(2deg)
+      scale(1.04);
   }
 
   18% {
     transform:
-      translate3d(-2%, 2%, 0)
-      rotate(-1.5deg)
-      scale(.97, 1.035);
+      translate3d(-4%, 4%, 0)
+      rotate(-2.5deg)
+      scale(.96, 1.06);
   }
 
   38% {
     transform:
-      translate3d(-6%, -1%, 0)
-      rotate(1deg)
-      scale(1.04, .97);
+      translate3d(-10%, -2%, 0)
+      rotate(2deg)
+      scale(1.06, .96);
   }
 
   59% {
     transform:
-      translate3d(1%, 4%, 0)
-      rotate(-1deg)
-      scale(.98, 1.025);
+      translate3d(3%, 7%, 0)
+      rotate(-2deg)
+      scale(.97, 1.05);
   }
 
   79% {
     transform:
-      translate3d(6%, 0%, 0)
-      rotate(1.5deg)
-      scale(1.025, .98);
+      translate3d(10%, 0%, 0)
+      rotate(2.5deg)
+      scale(1.05, .97);
   }
 
   100% {
     transform:
-      translate3d(-1%, -4%, 0)
-      rotate(-.5deg)
-      scale(1.035);
+      translate3d(-3%, -7%, 0)
+      rotate(-1deg)
+      scale(1.06);
   }
 }
 
@@ -592,11 +602,11 @@ img {
 @media (min-width: 851px) {
 
   .site-header::before {
-    opacity: .95;
+    opacity: 1;
   }
 
   .site-header::after {
-    opacity: .88;
+    opacity: .95;
   }
 }
 
@@ -616,18 +626,18 @@ img {
     background:
       linear-gradient(
         110deg,
-        rgba(18, 17, 15, .94),
-        rgba(18, 17, 15, .84),
-        rgba(18, 17, 15, .93)
+        rgba(18, 17, 15, .90),
+        rgba(18, 17, 15, .78),
+        rgba(18, 17, 15, .88)
       );
 
     backdrop-filter:
-      blur(11px)
-      saturate(115%);
+      blur(9px)
+      saturate(120%);
 
     -webkit-backdrop-filter:
-      blur(11px)
-      saturate(115%);
+      blur(9px)
+      saturate(120%);
   }
 
   .site-header::before {
@@ -638,10 +648,10 @@ img {
     top: -115%;
 
     filter:
-      blur(17px)
-      saturate(108%);
+      blur(12px)
+      saturate(125%);
 
-    opacity: .85;
+    opacity: .95;
   }
 
   .site-header::after {
@@ -652,16 +662,16 @@ img {
     top: -120%;
 
     filter:
-      blur(20px)
-      saturate(112%);
+      blur(15px)
+      saturate(130%);
 
-    opacity: .72;
+    opacity: .88;
   }
 
 
-  /* =========================
+  /* =======================================================
      MOBILE NAV
-     ========================= */
+     ======================================================= */
 
   .main-navigation {
     display: none;
@@ -686,7 +696,7 @@ img {
     gap: 3px;
 
     background:
-      rgba(18, 17, 15, .97);
+      rgba(18, 17, 15, .95);
 
     border: 1px solid var(--line);
 
@@ -746,9 +756,9 @@ img {
   }
 
 
-  /* =========================
+  /* =======================================================
      HERO
-     ========================= */
+     ======================================================= */
 
   .hero {
     min-height: 55vh;
@@ -761,9 +771,9 @@ img {
   }
 
 
-  /* =========================
+  /* =======================================================
      GRID
-     ========================= */
+     ======================================================= */
 
   .portfolio-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -772,9 +782,9 @@ img {
   }
 
 
-  /* =========================
+  /* =======================================================
      INNER PAGE
-     ========================= */
+     ======================================================= */
 
   .inner-page {
     width: min(90vw, 760px);
@@ -787,9 +797,9 @@ img {
   }
 
 
-  /* =========================
+  /* =======================================================
      ABOUT
-     ========================= */
+     ======================================================= */
 
   .about-block {
     grid-template-columns: 1fr;
@@ -809,9 +819,9 @@ img {
   }
 
 
-  /* =========================
+  /* =======================================================
      CONTACT
-     ========================= */
+     ======================================================= */
 
   .contact-layout {
     grid-template-columns: 1fr;
@@ -820,9 +830,9 @@ img {
   }
 
 
-  /* =========================
+  /* =======================================================
      FOOTER
-     ========================= */
+     ======================================================= */
 
   .site-footer {
     flex-direction: column;
@@ -853,6 +863,14 @@ img {
     min-height: 100px;
 
     padding: 14px;
+
+    background:
+      linear-gradient(
+        110deg,
+        rgba(18, 17, 15, .91),
+        rgba(18, 17, 15, .80),
+        rgba(18, 17, 15, .89)
+      );
   }
 
   .header-brand {
@@ -886,11 +904,11 @@ img {
     left: -60%;
     top: -125%;
 
-    opacity: .78;
+    opacity: .90;
 
     filter:
-      blur(15px)
-      saturate(108%);
+      blur(11px)
+      saturate(125%);
   }
 
   .site-header::after {
@@ -900,11 +918,11 @@ img {
     left: -60%;
     top: -130%;
 
-    opacity: .62;
+    opacity: .82;
 
     filter:
-      blur(18px)
-      saturate(110%);
+      blur(14px)
+      saturate(130%);
   }
 
   .hero-meta,
