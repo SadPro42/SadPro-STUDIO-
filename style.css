@@ -245,8 +245,8 @@ img {
 
   z-index: 30;
 
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
 
   box-shadow:
     0 8px 25px rgba(0, 0, 0, .25);
@@ -907,7 +907,7 @@ img {
     opacity: .90;
 
     filter:
-      blur(11px)
+      blur(5px)
       saturate(125%);
   }
 
